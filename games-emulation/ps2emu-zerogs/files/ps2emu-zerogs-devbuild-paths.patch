@@ -1,0 +1,44 @@
+--- opengl/zerogs.cpp.orig	2008-06-08 22:12:33.000000000 -0400
++++ opengl/zerogs.cpp	2008-06-08 22:15:37.000000000 -0400
+@@ -112,8 +112,8 @@
+ char* EFFECT_DIR = "C:\\programming\\ps2dev\\zerogs\\opengl\\";
+ char* EFFECT_NAME = "C:\\programming\\ps2dev\\zerogs\\opengl\\ps2hw.fx";
+ #else
+-char EFFECT_DIR[255] = "~/pcsx2/plugins/gs/zerogs/opengl/";
+-char EFFECT_NAME[255] = "~/pcsx2/plugins/gs/zerogs/opengl/ps2hw.fx";
++char EFFECT_DIR[255] = "~/.pcsx2/";
++char EFFECT_NAME[255] = "ps2hw.fx";
+ #endif
+ 
+ #endif
+@@ -1335,25 +1335,17 @@
+     char curwd[255];
+     getcwd(curwd, ARRAY_SIZE(curwd));
+ 
+-    strcpy(tempstr, "../plugins/gs/zerogs/opengl/");
+-    sprintf(EFFECT_NAME, "%sps2hw.fx", tempstr);
++    strcpy(tempstr, curwd);
++    sprintf(EFFECT_NAME, "%s/ps2hw.fx", tempstr);
+     FILE* f = fopen(EFFECT_NAME, "r");
+     if( f == NULL ) {
+-
+-        strcpy(tempstr, "../../plugins/gs/zerogs/opengl/");
+-        sprintf(EFFECT_NAME, "%sps2hw.fx", tempstr);
+-        f = fopen(EFFECT_NAME, "r");
+-
+-        if( f == NULL ) {
+-            ERROR_LOG("Failed to find %s, try compiling a non-devbuild\n", EFFECT_NAME);
+-            return false;
+-        }
++        return false;
+     }
+ 
+     fclose(f);
+ 
+-    sprintf(EFFECT_DIR, "%s/%s", curwd, tempstr);
+-    sprintf(EFFECT_NAME, "%sps2hw.fx", EFFECT_DIR);
++    sprintf(EFFECT_DIR, "%s", tempstr);
++    sprintf(EFFECT_NAME, "%s/ps2hw.fx", EFFECT_DIR);
+ #endif
+ 
+ #endif // RELEASE_TO_PUBLIC

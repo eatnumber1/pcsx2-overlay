@@ -1,0 +1,14 @@
+--- opengl/Makefile.am.orig	2008-06-08 11:50:59.000000000 -0400
++++ opengl/Makefile.am	2008-06-08 11:51:16.000000000 -0400
+@@ -14,11 +14,6 @@
+ # Create a shared object by faking an exe (thanks to ODE makefiles)
+ traplibdir=$(prefix)
+ 
+-
+-if RELEASE_TO_PUBLIC
+-preext=r
+-endif
+-
+ EXEEXT=$(preext)@so_ext@
+ 
+ traplib_PROGRAMS=libZeroGSogl

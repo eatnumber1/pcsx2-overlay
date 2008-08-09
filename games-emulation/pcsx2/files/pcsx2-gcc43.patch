@@ -1,0 +1,12 @@
+diff -Nur pcsx2.orig/GS.cpp pcsx2/GS.cpp
+--- pcsx2.orig/GS.cpp	2008-06-03 14:26:12.000000000 +0200
++++ pcsx2/GS.cpp	2008-06-03 14:29:17.000000000 +0200
+@@ -28,6 +28,8 @@
+ 
+ #include <vector>
+ #include <list>
++#include <cstring>
++#include <cstdlib>
+ 
+ using namespace std;
+ 
