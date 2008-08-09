@@ -36,9 +36,9 @@ src_unpack() {
 }
 
 src_install() {
-	exeinto "`games_get_libdir`/ps2emu/plugins"
+	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	newexe libCDVDlinuz.so libCDVDlinuz.so.${PV} || die
-	exeinto "`games_get_libdir`/ps2emu/plugins/cfg"
+	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
 	doexe cfgCDVDlinuz || die
 	dodoc ../../readme.txt ../../ChangeLog.txt || die
 	prepgamesdirs

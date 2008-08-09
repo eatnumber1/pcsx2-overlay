@@ -53,7 +53,7 @@ src_compile() {
 }
 
 src_install() {
-	exeinto "`games_get_libdir`/ps2emu/plugins"
+	exeinto "$(games_get_libdir)/ps2emu/plugins"
 
 	if use oss; then
 		newexe libspu2PeopsOSS.so.* libspu2PeopsOSS.so.${PV} || die

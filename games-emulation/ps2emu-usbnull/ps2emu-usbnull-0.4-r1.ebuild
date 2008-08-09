@@ -33,9 +33,9 @@ src_unpack() {
 }
 
 src_install() {
-	exeinto "`games_get_libdir`/ps2emu/plugins"
+	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	newexe libUSBnull.so libUSBnull.so.${PV} || die
-	exeinto "`games_get_libdir`/ps2emu/plugins/cfg"
+	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
 	doexe cfgUSBnull || die
 	dodoc ../ReadMe.txt || die
 	prepgamesdirs

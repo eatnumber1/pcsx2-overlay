@@ -33,7 +33,7 @@ src_unpack() {
 }
 
 src_install() {
-	exeinto "`games_get_libdir`/ps2emu/plugins"
+	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	newexe libSPU2null.so libSPU2null.so.${PV} || die
 	dodoc ../ReadMe.txt Changelog.txt || die
 	prepgamesdirs

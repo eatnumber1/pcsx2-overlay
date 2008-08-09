@@ -101,14 +101,14 @@ src_compile() {
 src_install() {
 	local x
 
-	keepdir "`games_get_libdir`/ps2emu/plugins"
+	keepdir "$(games_get_libdir)/ps2emu/plugins"
 	dodoc Docs/*.txt || die "dodoc failed"
 	newgamesbin Linux/${PN} ${PN}.bin || die
 
 	sed \
 		-e "s:%GAMES_BINDIR%:${GAMES_BINDIR}:" \
 		-e "s:%GAMES_DATADIR%:${GAMES_DATADIR}:" \
-		-e "s:%GAMES_LIBDIR%:`games_get_libdir`:" \
+		-e "s:%GAMES_LIBDIR%:$(games_get_libdir):" \
 		"${FILESDIR}/${PN}" > "${D}${GAMES_BINDIR}/${PN}" || die
 
 	cd ../bin
@@ -119,7 +119,7 @@ src_install() {
 
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
-			[[ "${x/_/}" == "${x}" ]] && x=${x}_`echo ${x} | tr 'a-z' 'A-Z'`
+			[[ "${x/_/}" == "${x}" ]] && x=${x}_$(echo ${x} | tr 'a-z' 'A-Z')
 			doins -r Langs/${x} || die "doins for language ${x} failed"
 		fi
 	done

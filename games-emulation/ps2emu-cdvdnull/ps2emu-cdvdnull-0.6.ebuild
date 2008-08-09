@@ -35,7 +35,7 @@ src_unpack() {
 }
 
 src_install() {
-	exeinto "`games_get_libdir`/ps2emu/plugins"
+	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	newexe libCDVDnull.so libCDVDnull.so.${PV} || die
 	dodoc ../ReadMe.txt || die
 	prepgamesdirs
