@@ -28,7 +28,6 @@ S="${WORKDIR}/opengl"
 
 pkg_setup() {
 	if ! use debug && use shaders; then
-		# The failure this causes is in the nvidia cg toolkit, not zerogs.
 		append-ldflags -Wl,--no-as-needed
 	fi
 }

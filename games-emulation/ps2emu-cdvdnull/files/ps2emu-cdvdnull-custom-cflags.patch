@@ -1,0 +1,29 @@
+--- Makefile.bak	2008-08-10 04:46:04.000000000 -0400
++++ Makefile	2008-08-10 04:46:01.000000000 -0400
+@@ -8,11 +8,9 @@
+ 
+ PLUGIN = libCDVDnull.so
+ 
+-CC = gcc
+ NASM = nasmw
+ RM = rm -f
+ AR = ar
+-STRIP = strip
+ RC = windres
+ 
+ OPTIMIZE = -O2 -fomit-frame-pointer -finline-functions -ffast-math -fno-strict-aliasing
+@@ -26,12 +24,11 @@
+ 
+ DEPS:= $(OBJS:.o=.d)
+ 
+-CFLAGS = -Wall ${OPTIMIZE} -I. -I/usr/local/include ${FLAGS} -fPIC
++CFLAGS += -Wall ${OPTIMIZE} -I. -I/usr/local/include ${FLAGS} -fPIC
+ 
+ cdvdnull: ${OBJS}
+ #	dllwrap --def plugin.def -o ${PLUGIN} ${OBJS} ${LIBS}
+-	${CC} -shared -Wl,-soname,${PLUGIN} ${CFLAGS} ${OBJS} -o ${PLUGIN} ${LIBS}
+-	${STRIP} ${PLUGIN}
++	${CC} -shared -Wl,-soname,${PLUGIN} ${CFLAGS} ${LDFLAGS} ${OBJS} -o ${PLUGIN} ${LIBS}
+ 
+ .PHONY: clean cdvdnull
+ 

@@ -25,12 +25,7 @@ src_unpack() {
 	S="${S}/src/Linux"
 	cd "${S}"
 	
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\bstrip\b/d' \
-		-e 's/-g\b//g' \
-		-e 's/CFLAGS =/CFLAGS +=/' \
-		Makefile || die
+	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 
 src_install() {

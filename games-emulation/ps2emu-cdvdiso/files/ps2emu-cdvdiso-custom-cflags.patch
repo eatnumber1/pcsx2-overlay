@@ -1,0 +1,22 @@
+--- Makefile.bak	2008-08-10 04:15:54.000000000 -0400
++++ Makefile	2008-08-10 04:16:47.000000000 -0400
+@@ -1,10 +1,7 @@
+-
+-CC = gcc
+-
+ PLUGIN = libCDVDiso.so
+ CFG = cfgCDVDiso
+ MKISO = mkiso
+-CFLAGS = -fPIC -Wall -g  -I.. -I. -D__LINUX__
++CFLAGS += -fPIC -Wall -I.. -I. -D__LINUX__
+ OBJS = ../CDVDisop.o Config.o Linux.o ../libiso.o
+ CFGOBJS = conf.o interface.o support.o ${OBJS}
+ LIBS = -lz -lbz2 -lstdc++
+@@ -22,7 +19,6 @@
+ cfg: ${CFGOBJS}
+ 	rm -f ${CFG}
+ 	${CC} ${CFLAGS} ${CFGOBJS} -o ${CFG} ${CFGLIBS}
+-	strip ${CFG}
+ 
+ clean: 
+ 	rm -f ${OBJS} ${DEPS} ${PLUGIN} ${CFGOBJS} ${CFG}

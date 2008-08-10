@@ -3,7 +3,7 @@
 # $Header: $
 
 ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/pcsx2/plugins/cdvd/CDVDisoEFP"
-inherit eutils games subversion
+inherit eutils games subversion flag-o-matic
 
 DESCRIPTION="PS2Emu ISO CDVD EFP plugin"
 HOMEPAGE="http://www.pcsx2.net/"
@@ -18,20 +18,16 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/CDVDisoEFP"
 
+pkg_setup() {
+	append-ldflags -Wl,--no-as-needed
+}
+
 src_unpack() {
 	subversion_src_unpack
 	S="${S}/src/Linux"
 	cd "${S}"
 
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\bstrip\b/d' \
-		-e 's/-g\b//g' \
-		-e 's/CFLAGS =/CFLAGS +=/' \
-		-e 's/$(CC)/$(CC) $(CFLAGS) $(LDFLAGS)/g' \
-		-e 's/-O[0-9]//g' \
-		-e 's/-fomit-frame-pointer//g' \
-		Makefile || die
+	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 }
 
 src_install() {

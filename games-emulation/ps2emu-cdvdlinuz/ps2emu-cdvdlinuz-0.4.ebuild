@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit games
+inherit games flag-o-matic
 
 PCSX2="pcsx2-0.9.4"
 
@@ -22,17 +22,15 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PCSX2}/plugins/cdvd/CDVDlinuz/Src/Linux"
 
+pkg_setup() {
+	append-ldflags -Wl,--no-as-needed
+}
+
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\bstrip\b/d' \
-		-e 's/-O[0-9]\b//g' \
-		-e 's/-fomit-frame-pointer\b//g' \
-		-e 's/-fPIC/$(CFLAGS) -fPIC/g' \
-		Makefile || die
+	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 
 src_install() {

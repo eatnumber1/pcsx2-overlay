@@ -24,14 +24,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\${STRIP}/d' \
-		-e 's/-O[0-9]\b//g' \
-		-e 's/-fomit-frame-pointer\b//g' \
-		-e 's/-ffast-math\b//g' \
-		-e "s/^OPTIMIZE = /OPTIMIZE = ${CFLAGS} /" \
-		Makefile || die
+	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 
 src_install() {
