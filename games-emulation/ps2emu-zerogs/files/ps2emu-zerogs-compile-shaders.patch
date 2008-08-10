@@ -1,0 +1,19 @@
+Common subdirectories: opengl.bak/.deps and opengl/.deps
+Common subdirectories: opengl.bak/.svn and opengl/.svn
+Common subdirectories: opengl.bak/Linux and opengl/Linux
+Common subdirectories: opengl.bak/Win32 and opengl/Win32
+Common subdirectories: opengl.bak/ZeroGSShaders and opengl/ZeroGSShaders
+Common subdirectories: opengl.bak/autom4te.cache and opengl/autom4te.cache
+diff -u opengl.bak/configure.ac opengl/configure.ac
+--- opengl.bak/configure.ac	2008-08-10 02:57:25.000000000 -0400
++++ opengl/configure.ac	2008-08-10 03:06:35.000000000 -0400
+@@ -139,6 +139,7 @@
+ AC_OUTPUT([
+  Makefile
+  Linux/Makefile
++ ZeroGSShaders/Makefile
+  ])
+ 
+ echo "Configuration:"
+Common subdirectories: opengl.bak/ctx0 and opengl/ctx0
+Common subdirectories: opengl.bak/ctx1 and opengl/ctx1
