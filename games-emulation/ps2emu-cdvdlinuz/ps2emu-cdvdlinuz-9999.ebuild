@@ -16,7 +16,6 @@ IUSE="doc"
 DEPEND="app-arch/bzip2
 	sys-libs/zlib
 	>=x11-libs/gtk+-2"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/CDVDlinuz"
 

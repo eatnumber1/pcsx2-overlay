@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=x11-libs/gtk+-2"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PCSX2}/plugins/usb/USBnull/Linux"
 
@@ -24,12 +23,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\bstrip\b/d' \
-		-e 's/-O[0-9]\b//g' \
-		-e 's/-fomit-frame-pointer\b//g' \
-		Makefile || die
+	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 }
 
 src_install() {

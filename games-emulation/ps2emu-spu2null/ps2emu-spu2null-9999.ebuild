@@ -14,7 +14,6 @@ KEYWORDS=""
 IUSE="doc"
 
 DEPEND=">=x11-libs/gtk+-2"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PCSX2}/SPU2null"
 

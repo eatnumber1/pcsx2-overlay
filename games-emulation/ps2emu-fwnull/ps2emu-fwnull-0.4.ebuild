@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=x11-libs/gtk+-2"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PCSX2}/plugins/fw/FWnull/Linux"
 

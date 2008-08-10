@@ -14,7 +14,6 @@ KEYWORDS=""
 IUSE="doc"
 
 DEPEND=">=x11-libs/gtk+-2.6.1"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/CDVDisoEFP"
 
