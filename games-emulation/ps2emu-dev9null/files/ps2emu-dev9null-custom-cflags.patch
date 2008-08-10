@@ -1,0 +1,22 @@
+--- Makefile.bak	2008-08-10 11:38:23.000000000 -0400
++++ Makefile	2008-08-10 11:39:32.000000000 -0400
+@@ -1,8 +1,5 @@
+-
+-CC = gcc
+-
+ PLUGIN = libDEV9null.so
+-CFLAGS+= -fPIC -Wall -O2 -fomit-frame-pointer -D__LINUX__
++CFLAGS+= -fPIC -Wall -D__LINUX__
+ OBJS = dev9null.o
+ DEPS:= $(OBJS:.o=.d)
+ 
+@@ -11,8 +8,7 @@
+ 
+ plugin: ${OBJS}
+ 	rm -f ${PLUGIN}
+-	gcc -shared -Wl,-soname,${PLUGIN} ${CFLAGS} ${OBJS} -o ${PLUGIN} ${LIBS}
+-	strip --strip-unneeded --strip-debug ${PLUGIN}
++	${CC} -shared -Wl,-soname,${PLUGIN} ${CFLAGS} ${LDFLAGS} ${OBJS} -o ${PLUGIN} ${LIBS}
+ 
+ clean: 
+ 	rm -f ${OBJS} ${DEPS}
