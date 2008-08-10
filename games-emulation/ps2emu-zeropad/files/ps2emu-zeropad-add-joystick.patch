@@ -1,9 +1,17 @@
-Common subdirectories: zeropad.bak/.svn and zeropad/.svn
-Common subdirectories: zeropad.bak/Linux and zeropad/Linux
-Common subdirectories: zeropad.bak/Windows and zeropad/Windows
-diff -u zeropad.bak/configure.ac zeropad/configure.ac
+diff -ur zeropad.bak/Linux/linux.cpp zeropad/Linux/linux.cpp
+--- zeropad.bak/Linux/linux.cpp	2008-08-10 13:33:07.000000000 -0400
++++ zeropad/Linux/linux.cpp	2008-08-10 13:33:34.000000000 -0400
+@@ -20,7 +20,6 @@
+ #include <gtk/gtk.h>
+ #include <pthread.h>
+ 
+-#define JOYSTICK_SUPPORT
+ #ifdef JOYSTICK_SUPPORT
+ #include <SDL/SDL.h>
+ #endif
+diff -ur zeropad.bak/configure.ac zeropad/configure.ac
 --- zeropad.bak/configure.ac	2008-08-10 13:33:07.000000000 -0400
-+++ zeropad/configure.ac	2008-08-10 13:40:11.000000000 -0400
++++ zeropad/configure.ac	2008-08-10 14:09:07.000000000 -0400
 @@ -73,16 +73,23 @@
  
  AC_CHECK_FUNCS([ _aligned_malloc _aligned_free ], AC_DEFINE(HAVE_ALIGNED_MALLOC))
@@ -11,7 +19,7 @@ diff -u zeropad.bak/configure.ac zeropad/configure.ac
 -AC_CHECK_LIB(SDL,SDL_Init,[])
 +AC_ARG_ENABLE(joystick, AC_HELP_STRING([--disable-joystick], [Disable joystick support]),
 + joystick=$enableval,joystick=yes)
-+if test "x$joystick" == xjoystick
++if test "x$joystick" == xyes
 +then
 + AC_CHECK_LIB(SDL,SDL_Init,[])
 + AC_CHECK_HEADER([SDL/SDL.h], [AC_DEFINE(JOYSTICK_SUPPORT,1)])
