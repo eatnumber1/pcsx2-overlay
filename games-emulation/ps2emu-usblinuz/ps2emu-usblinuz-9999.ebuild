@@ -23,15 +23,8 @@ src_unpack() {
 	S="${S}/Linux"
 	cd "${S}"
 	
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\bstrip\b/d' \
-		-e 's/-O[0-9]\b//g' \
-		-e 's/-fomit-frame-pointer\b//g' \
-		-e 's/gtk-config --cflags/pkg-config --cflags gtk+-2.0/' \
-		-e 's/gtk-config --libs/pkg-config --libs gtk+-2.0/' \
-		-e 's/${CFLAGS}/& ${LDFLAGS}/g' \
-		Makefile || die
+	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
+	epatch "${FILESDIR}"/${PN}-no-window-dialog.patch
 }
 
 src_install() {
