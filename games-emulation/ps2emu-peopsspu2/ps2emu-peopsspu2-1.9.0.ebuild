@@ -30,37 +30,28 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\bstrip\b/d' \
-		-e 's/-O[0-9]\b//g' \
-		-e 's/-fomit-frame-pointer\b//g' \
-		-e 's/-ffast-math\b//g' \
-		-e 's/CCFLAGS3 =/CCFLAGS3 = $(CFLAGS)/' \
-		Makefile || die
+	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 }
 
 src_compile() {
-	if use oss; then
-		sed -i 's/USEALSA = .*$/USEALSA = FALSE/' Makefile
-		emake || die
+	if use alsa; then
+		emake USEALSA=TRUE || die
 	fi
 
-	if use alsa; then
-		sed -i 's/USEALSA = .*$/USEALSA = TRUE/' Makefile
+	if use oss; then
 		emake || die
 	fi
 }
 
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
-
-	if use oss; then
-		newexe libspu2PeopsOSS.so.* libspu2PeopsOSS.so.${PV} || die
-	fi
 	
 	if use alsa; then
 		newexe libspu2PeopsALSA.so.* libspu2PeopsALSA.so.${PV} || die
+	fi
+
+	if use oss; then
+		newexe libspu2PeopsOSS.so.* libspu2PeopsOSS.so.${PV} || die
 	fi
 	
 	prepgamesdirs

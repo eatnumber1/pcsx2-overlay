@@ -1,0 +1,19 @@
+--- Makefile.bak	2008-08-10 12:48:32.000000000 -0400
++++ Makefile	2008-08-10 12:49:09.000000000 -0400
+@@ -1,6 +1,3 @@
+-
+-CC = gcc
+-
+ PLUGIN = libSPU2null.so
+ CFLAGS+= -fPIC -Wall -O2 -fomit-frame-pointer -D__LINUX__
+ OBJS = SPU2.o
+@@ -13,8 +10,7 @@
+ 
+ plugin: ${OBJS}
+ 	rm -f ${PLUGIN}
+-	gcc -shared -Wl,-soname,${PLUGIN} ${CFLAGS} ${OBJS} -o ${PLUGIN} ${LIBS}
+-	strip --strip-unneeded --strip-debug ${PLUGIN}
++	gcc -shared -Wl,-soname,${PLUGIN} ${CFLAGS} ${LDFLAGS} ${OBJS} -o ${PLUGIN} ${LIBS}
+ 
+ clean:
+ 	rm -f ${OBJS} ${DEPS}

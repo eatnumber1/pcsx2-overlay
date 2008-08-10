@@ -23,12 +23,7 @@ src_unpack() {
 	S="${S}/Linux"
 	cd "${S}"
 	
-	sed -i \
-		-e '/^CC =/d' \
-		-e '/\bstrip\b/d' \
-		-e 's/-O[0-9]\b//g' \
-		-e 's/-fomit-frame-pointer\b//g' \
-		Makefile || die
+	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 
 src_install() {
