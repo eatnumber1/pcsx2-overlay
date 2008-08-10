@@ -27,7 +27,7 @@ S="${WORKDIR}/${PCSX2}/plugins/cdvd/CDVDiso/src/Linux"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	
+
 	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 

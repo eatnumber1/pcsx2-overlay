@@ -14,6 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug sse2 +shaders"
+EAPI="1"
 
 DEPEND="media-gfx/nvidia-cg-toolkit
 	x11-libs/libX11

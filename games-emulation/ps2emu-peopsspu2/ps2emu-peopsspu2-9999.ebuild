@@ -46,7 +46,7 @@ src_compile() {
 
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
-	
+
 	if use alsa; then
 		newexe libspu2PeopsALSA.so.* libspu2PeopsALSA.so.${PV} || die
 	fi

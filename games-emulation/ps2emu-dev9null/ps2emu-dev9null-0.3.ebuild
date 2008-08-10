@@ -25,7 +25,7 @@ S="${WORKDIR}/${PCSX2}/plugins/dev9/dev9null/src"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	
+
 	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 }
 

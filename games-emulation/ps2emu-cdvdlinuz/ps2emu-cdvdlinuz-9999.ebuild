@@ -30,7 +30,7 @@ src_unpack() {
 	subversion_src_unpack
 	S="${S}/Src/Linux"
 	cd "${S}"
-	
+
 	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 

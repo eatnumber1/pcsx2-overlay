@@ -62,7 +62,7 @@ src_unpack() {
 
 src_compile() {
 	local myconf
-	
+
 	if ! use x86 && ! use amd64; then
 		einfo "Recompiler not supported on this architecture. Disabling."
 		myconf=" --disable-recbuild"
@@ -70,7 +70,7 @@ src_compile() {
 		einfo "Recompiler requires USE=\"mmx sse\". Disabling."
 		myconf=" --disable-recbuild"
 	fi
-	
+
 	egamesconf  \
 		$(use_enable debug devbuild) \
 		$(use_enable debug) \

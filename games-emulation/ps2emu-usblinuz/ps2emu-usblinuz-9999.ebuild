@@ -24,7 +24,7 @@ src_unpack() {
 	subversion_src_unpack
 	S="${S}/Linux"
 	cd "${S}"
-	
+
 	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 	epatch "${FILESDIR}"/${PN}-no-window-dialog.patch
 }

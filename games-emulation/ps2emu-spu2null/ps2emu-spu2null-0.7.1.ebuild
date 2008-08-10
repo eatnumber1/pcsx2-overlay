@@ -25,7 +25,7 @@ S="${WORKDIR}/${PCSX2}/plugins/spu2/SPU2null/Src"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	
+
 	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 }
 

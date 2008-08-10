@@ -11,6 +11,7 @@ HOMEPAGE="http://www.pcsx2.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
+EAPI="1"
 IUSE="debug sse2 +shaders"
 
 DEPEND="media-gfx/nvidia-cg-toolkit

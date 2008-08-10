@@ -31,7 +31,7 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	
+
 	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 
