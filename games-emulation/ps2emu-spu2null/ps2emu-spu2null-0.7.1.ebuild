@@ -17,6 +17,9 @@ IUSE=""
 
 DEPEND=">=x11-libs/gtk+-2"
 
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
+
 S="${WORKDIR}/${PCSX2}/plugins/spu2/SPU2null/Src"
 
 src_unpack() {

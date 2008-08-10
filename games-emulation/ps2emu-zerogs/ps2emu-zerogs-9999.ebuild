@@ -25,6 +25,9 @@ DEPEND="media-gfx/nvidia-cg-toolkit
 	x11-proto/xf86vidmodeproto
 	>=x11-libs/gtk+-2"
 
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
+
 S="${WORKDIR}/opengl"
 
 pkg_setup() {

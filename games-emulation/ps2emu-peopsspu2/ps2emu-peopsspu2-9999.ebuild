@@ -14,7 +14,9 @@ KEYWORDS=""
 IUSE="alsa oss"
 
 DEPEND="alsa? ( media-libs/alsa-lib )"
-RDEPEND="${DEPEND}"
+
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/PeopsSPU2"
 

@@ -20,6 +20,9 @@ DEPEND=">=x11-libs/gtk+-2
 	virtual/libstdc++
 	joystick? ( media-libs/libsdl )"
 
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
+
 S="${WORKDIR}/${PCSX2}/plugins/pad/zeropad"
 
 pkg_setup() {

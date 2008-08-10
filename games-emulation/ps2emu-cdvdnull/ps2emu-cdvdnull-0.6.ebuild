@@ -15,8 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
+DEPEND=">=x11-libs/gtk+-2"
+
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/${PCSX2}/plugins/cdvd/CDVDnull/Src"
 

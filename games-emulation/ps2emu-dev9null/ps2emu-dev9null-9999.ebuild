@@ -14,7 +14,9 @@ KEYWORDS=""
 IUSE="doc"
 
 DEPEND=""
-RDEPEND=""
+
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/dev9null"
 

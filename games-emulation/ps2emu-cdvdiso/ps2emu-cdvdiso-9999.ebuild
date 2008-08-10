@@ -17,6 +17,9 @@ DEPEND=">=app-arch/bzip2-1.0.0
 	>=sys-libs/zlib-1.1.3
 	>=x11-libs/gtk+-1.2.5"
 
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
+
 S="${WORKDIR}/CDVDiso"
 
 src_unpack() {

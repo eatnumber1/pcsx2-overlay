@@ -16,7 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=""
+
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/${PCSX2}/plugins/dev9/dev9null/src"
 

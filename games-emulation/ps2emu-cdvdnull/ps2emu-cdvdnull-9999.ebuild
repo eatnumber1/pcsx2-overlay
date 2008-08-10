@@ -13,8 +13,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
-DEPEND=""
-RDEPEND=""
+DEPEND=">=x11-libs/gtk+-2"
+
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/CDVDnull"
 

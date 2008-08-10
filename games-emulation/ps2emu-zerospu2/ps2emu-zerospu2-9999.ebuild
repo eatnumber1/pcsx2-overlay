@@ -17,6 +17,9 @@ DEPEND="media-libs/alsa-lib
 	virtual/libstdc++
 	>=x11-libs/gtk+-2"
 
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
+
 S="${WORKDIR}/zerospu2"
 
 src_unpack() {

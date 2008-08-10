@@ -16,7 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa oss"
 
 DEPEND="alsa? ( media-libs/alsa-lib )"
-RDEPEND="${DEPEND}"
+
+RDEPEND="${DEPEND}
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/${PCSX2}/plugins/spu2/PeopsSPU2"
 
