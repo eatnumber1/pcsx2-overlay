@@ -116,7 +116,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use devbuild; then
+	if ! use debug; then
 		ewarn "If this package exhibits random crashes, recompile ${PN}"
 		ewarn "with the debug use flag enabled. If that fixes it, file a bug."
 		echo
