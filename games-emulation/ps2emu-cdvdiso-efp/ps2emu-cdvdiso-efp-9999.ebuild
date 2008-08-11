@@ -37,6 +37,8 @@ src_install() {
 	doexe libCDVDisoEFP.so || die
 	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
 	doexe cfgCDVDisoEFP || die
-	use doc && dodoc ../../readme.txt ../../ChangeLog.txt || die
+	if use doc; then
+		dodoc ../../readme.txt ../../ChangeLog.txt || die
+	fi
 	prepgamesdirs
 }

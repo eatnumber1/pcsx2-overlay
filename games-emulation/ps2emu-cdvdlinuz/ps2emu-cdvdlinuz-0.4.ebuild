@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/pcsx2/${PCSX2}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 DEPEND="app-arch/bzip2
 	sys-libs/zlib
@@ -40,6 +40,8 @@ src_install() {
 	newexe libCDVDlinuz.so libCDVDlinuz.so.${PV} || die
 	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
 	doexe cfgCDVDlinuz || die
-	dodoc ../../readme.txt ../../ChangeLog.txt || die
+	if use doc; then
+		dodoc ../../readme.txt ../../ChangeLog.txt || die
+	fi
 	prepgamesdirs
 }

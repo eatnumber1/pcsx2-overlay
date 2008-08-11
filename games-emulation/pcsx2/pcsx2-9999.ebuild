@@ -86,7 +86,9 @@ src_install() {
 	local x
 
 	keepdir "$(games_get_libdir)/ps2emu/plugins"
-	use doc && dodoc Docs/*.txt || die
+	if use doc; then
+		dodoc Docs/*.txt || die
+	fi
 	newgamesbin Linux/${PN} ${PN}.bin || die
 
 	sed \
@@ -96,7 +98,9 @@ src_install() {
 		"${FILESDIR}/${PN}" > "${D}${GAMES_BINDIR}/${PN}" || die
 
 	cd ../bin
-	use doc && dohtml -r compat_list/* || die
+	if use doc; then
+		dohtml -r compat_list/* || die
+	fi
 	insinto "${GAMES_DATADIR}/${PN}"
 	doins -r *.xml .pixmaps patches || die
 

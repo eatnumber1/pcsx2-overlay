@@ -31,6 +31,8 @@ src_unpack() {
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	doexe libPADwin.so || die
-	use doc && dodoc ../ReadMe.txt || die
+	if use doc; then
+		dodoc ../ReadMe.txt || die
+	fi
 	prepgamesdirs
 }

@@ -33,6 +33,8 @@ src_install() {
 	doexe libUSBnull.so || die
 	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
 	doexe cfgUSBnull || die
-	use doc && dodoc ../ReadMe.txt || die
+	if use doc; then
+		dodoc ../ReadMe.txt || die
+	fi
 	prepgamesdirs
 }

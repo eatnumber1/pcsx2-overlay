@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/pcsx2/${PCSX2}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 DEPEND=""
 
@@ -32,6 +32,8 @@ src_unpack() {
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	newexe libDEV9null.so libDEV9null.so.${PV} || die
-	dodoc ../ReadMe.txt || die
+	if use doc; then
+		dodoc ../ReadMe.txt || die
+	fi
 	prepgamesdirs
 }
