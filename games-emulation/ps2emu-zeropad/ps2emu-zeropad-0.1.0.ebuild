@@ -17,7 +17,6 @@ IUSE="debug joystick"
 
 DEPEND=">=x11-libs/gtk+-2
 	x11-proto/xproto
-	virtual/libstdc++
 	joystick? ( media-libs/libsdl )"
 
 RDEPEND="${DEPEND}

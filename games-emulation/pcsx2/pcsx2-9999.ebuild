@@ -16,7 +16,6 @@ IUSE="debug nls sse3 sse mmx doc"
 
 DEPEND="sys-libs/zlib
 	>=x11-libs/gtk+-2
-	virtual/libstdc++
 	x11-proto/xproto
 	nls? ( virtual/libintl )"
 

@@ -17,7 +17,6 @@ IUSE="debug sse2 +shaders"
 DEPEND="media-gfx/nvidia-cg-toolkit
 	x11-libs/libX11
 	media-libs/glew
-	virtual/libstdc++
 	virtual/opengl
 	media-libs/jpeg
 	sys-libs/zlib

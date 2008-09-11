@@ -14,7 +14,6 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="media-libs/alsa-lib
-	virtual/libstdc++
 	>=x11-libs/gtk+-2"
 
 RDEPEND="${DEPEND}
