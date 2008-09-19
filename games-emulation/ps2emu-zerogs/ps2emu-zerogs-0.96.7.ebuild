@@ -63,7 +63,7 @@ src_compile() {
 
 	if ! use debug && use shaders; then
 		einfo "Compiling shaders..."
-		emake -C ZeroGSShaders
+		emake -C ZeroGSShaders || die "Unable to compile shader compiler."
 		./ZeroGSShaders/zgsbuild ps2hw.fx ps2hw.dat || \
 			die "Unable to compile shaders"
 	fi
