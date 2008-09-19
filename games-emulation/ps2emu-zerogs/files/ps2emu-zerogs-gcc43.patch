@@ -1,6 +1,6 @@
-diff -Nur opengl.orig/Mem.h opengl/Mem.h
---- opengl.orig/Mem.h	2008-06-03 11:28:33.000000000 +0200
-+++ opengl/Mem.h	2008-06-03 11:35:17.000000000 +0200
+diff -Nur opengl.bak/Mem.h opengl/Mem.h
+--- opengl.bak/Mem.h	2008-09-18 20:34:04.000000000 -0400
++++ opengl/Mem.h	2008-09-18 20:34:08.000000000 -0400
 @@ -21,6 +21,8 @@
  
  #include <assert.h>
@@ -10,3 +10,16 @@ diff -Nur opengl.orig/Mem.h opengl/Mem.h
  
  // works only when base is a power of 2
  #define ROUND_UPPOW2(val, base)	(((val)+(base-1))&~(base-1))
+diff -Nur opengl.bak/ZeroGSShaders/zerogsshaders.cpp opengl/ZeroGSShaders/zerogsshaders.cpp
+--- opengl.bak/ZeroGSShaders/zerogsshaders.cpp	2008-09-18 20:34:04.000000000 -0400
++++ opengl/ZeroGSShaders/zerogsshaders.cpp	2008-09-18 20:34:29.000000000 -0400
+@@ -5,6 +5,9 @@
+ #include <stdio.h>
+ #include <assert.h>
+ 
++#include <cstdlib>
++#include <cstring>
++
+ #include <zlib.h>
+ #include "zpipe.h"
+ 
