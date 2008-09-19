@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/CDVDisoEFP"
 
 pkg_setup() {
+	games_pkg_setup
 	append-ldflags -Wl,--no-as-needed
 }
 

@@ -23,6 +23,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/CDVDlinuz"
 
 pkg_setup() {
+	games_pkg_setup
+
 	append-ldflags -Wl,--no-as-needed
 }
 

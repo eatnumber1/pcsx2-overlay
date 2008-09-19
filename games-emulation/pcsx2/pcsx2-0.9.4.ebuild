@@ -29,6 +29,8 @@ S="${WORKDIR}/${P}/${PN}"
 pkg_setup() {
 	local x
 
+	games_pkg_setup
+
 	if ! use nls; then
 		for x in ${LANGS}; do
 			if [ -n "$(usev linguas_${x})" ]; then

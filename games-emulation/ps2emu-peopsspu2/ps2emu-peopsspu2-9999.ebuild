@@ -21,6 +21,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/PeopsSPU2"
 
 pkg_setup() {
+	games_pkg_setup
+
 	if ! use oss && ! use alsa; then
 		die "Either the alsa or oss USE flag must be enabled!"
 	fi

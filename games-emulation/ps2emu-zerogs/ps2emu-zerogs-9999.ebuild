@@ -31,6 +31,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/opengl"
 
 pkg_setup() {
+	games_pkg_setup
+
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
 	fi

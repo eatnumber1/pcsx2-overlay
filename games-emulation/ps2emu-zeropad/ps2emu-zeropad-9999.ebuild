@@ -23,6 +23,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/zeropad"
 
 pkg_setup() {
+	games_pkg_setup
+
 	if use joystick && built_with_use media-libs/libsdl nojoystick; then
 		eerror "You must have media-libs/libsdl built with USE=\"-nojoystick\""
 		die "You must have media-libs/libsdl built with USE=\"-nojoystick\""

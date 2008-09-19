@@ -33,6 +33,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${PCSX2}/plugins/gs/zerogs/opengl"
 
 pkg_setup() {
+	games_pkg_setup
+
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
 	fi

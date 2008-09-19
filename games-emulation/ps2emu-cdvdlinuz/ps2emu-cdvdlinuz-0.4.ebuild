@@ -25,6 +25,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${PCSX2}/plugins/cdvd/CDVDlinuz/Src/Linux"
 
 pkg_setup() {
+	games_pkg_setup
+
 	append-ldflags -Wl,--no-as-needed
 }
 
