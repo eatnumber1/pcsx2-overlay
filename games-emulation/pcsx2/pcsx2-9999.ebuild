@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+WORKING_REV="390"
 if use working; then
-	ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}@390"
+	ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}@${WORKING_REV}"
 else
 	ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}"
 fi	
