@@ -16,7 +16,7 @@ IUSE="doc"
 DEPEND=">=x11-libs/gtk+-2"
 
 RDEPEND="${DEPEND}
-	games-emulation/pcsx2"
+	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
 S="${WORKDIR}/USBnull"
 

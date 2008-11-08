@@ -18,7 +18,7 @@ IUSE="doc"
 DEPEND=""
 
 RDEPEND="${DEPEND}
-	games-emulation/pcsx2"
+	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
 S="${WORKDIR}/${PCSX2}/plugins/dev9/dev9null/src"
 

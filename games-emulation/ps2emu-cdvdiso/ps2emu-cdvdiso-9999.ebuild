@@ -18,7 +18,7 @@ DEPEND=">=app-arch/bzip2-1.0.0
 	>=x11-libs/gtk+-1.2.5"
 
 RDEPEND="${DEPEND}
-	games-emulation/pcsx2"
+	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
 S="${WORKDIR}/CDVDiso"
 

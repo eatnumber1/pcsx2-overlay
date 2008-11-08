@@ -16,7 +16,7 @@ IUSE="alsa oss"
 DEPEND="alsa? ( media-libs/alsa-lib )"
 
 RDEPEND="${DEPEND}
-	games-emulation/pcsx2"
+	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
 S="${WORKDIR}/PeopsSPU2"
 
