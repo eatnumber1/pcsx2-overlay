@@ -2,7 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}"
+if use working; then
+	ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}@390"
+else
+	ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}"
+fi	
 inherit games autotools eutils subversion
 
 DESCRIPTION="PlayStation2 emulator"
@@ -12,7 +16,7 @@ SVN_PCSX2_BINDIR="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/bin"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug nls sse3 sse mmx doc"
+IUSE="debug nls sse3 sse mmx doc working"
 
 DEPEND="sys-libs/zlib
 	>=x11-libs/gtk+-2
