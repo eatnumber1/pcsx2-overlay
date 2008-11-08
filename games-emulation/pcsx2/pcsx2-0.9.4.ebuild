@@ -16,7 +16,8 @@ IUSE="debug nls sse3 sse mmx doc"
 DEPEND="sys-libs/zlib
 	>=x11-libs/gtk+-2
 	x11-proto/xproto
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+	!games-emulation/pcsx2-playground"
 
 LANGS="ar bg cz de du el es fr hb it ja pe pl po po_BR ro ru sh sw tc tr"
 

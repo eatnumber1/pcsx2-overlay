@@ -1,0 +1,19 @@
+--- configure.ac.bak	2008-11-08 10:20:08.510052296 -0500
++++ configure.ac	2008-11-08 10:21:26.302553509 -0500
+@@ -11,15 +11,10 @@
+ dnl necessary for compiling assembly
+ AM_PROG_AS
+ 
+-CFLAGS=
+-CPPFLAGS=
+-CXXFLAGS=
+-CCASFLAGS=
+-
+ WARNING_FLAGS="-Wall -Wno-format -Wno-unused-value"
+ dnl EXTRA_FLAGS = " -Xlinker -fpermissive -march=native"
+ NORMAL_FLAGS=" -pipe -O3 -Xlinker -zmuldefs -fomit-frame-pointer ${WARNING_FLAGS}"
+-DEBUG_FLAGS=" -g -Xlinker -zmuldefs ${WARNING_FLAGS}"
++DEBUG_FLAGS=" -Xlinker -zmuldefs ${WARNING_FLAGS}"
+ 
+ dnl Check for debug build
+ AC_MSG_CHECKING(debug build)

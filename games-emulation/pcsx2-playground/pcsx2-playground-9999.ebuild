@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}"
+ESVN_REPO_URI="http://${PN}.googlecode.com/svn/trunk/pcsx2"
 inherit games autotools eutils subversion
 
 DESCRIPTION="PlayStation2 emulator"
 HOMEPAGE="http://www.pcsx2.net/"
-SVN_PCSX2_BINDIR="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/bin"
+SVN_PCSX2_BINDIR="https://pcsx2.svn.sourceforge.net/svnroot/pcsx2/bin"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +18,7 @@ DEPEND="sys-libs/zlib
 	>=x11-libs/gtk+-2
 	x11-proto/xproto
 	nls? ( virtual/libintl )
-	!games-emulation/pcsx2-playground"
+	!games-emulation/pcsx2"
 
 LANGS="ar bg cz de du el es fr hb it ja pe pl po po_BR ro ru sh sw tc tr"
 
@@ -26,7 +26,7 @@ for i in ${LANGS}; do
 	IUSE="${IUSE} linguas_${i}"
 done
 
-S="${WORKDIR}/${P}/${PN}"
+S="${WORKDIR}/${P}/pcsx2"
 
 pkg_setup() {
 	local x
@@ -56,8 +56,6 @@ src_unpack() {
 
 	# Allow plugin inis to be stored in ~/.pcsx2/inis.
 	epatch "${FILESDIR}"/${PN}-plugin-inis.patch
-
-	epatch "${FILESDIR}"/${PN}-gcc43.patch
 
 	eautoreconf -v --install || die
 }
@@ -91,22 +89,22 @@ src_install() {
 	if use doc; then
 		dodoc Docs/*.txt || die
 	fi
-	newgamesbin Linux/${PN} ${PN}.bin || die
+	newgamesbin Linux/pcsx2 pcsx2.bin || die
 
 	sed \
 		-e "s:%GAMES_BINDIR%:${GAMES_BINDIR}:" \
 		-e "s:%GAMES_DATADIR%:${GAMES_DATADIR}:" \
 		-e "s:%GAMES_LIBDIR%:$(games_get_libdir):" \
-		"${FILESDIR}/${PN}" > "${D}${GAMES_BINDIR}/${PN}" || die
+		"${FILESDIR}/pcsx2" > "${D}${GAMES_BINDIR}/pcsx2" || die
 
 	cd ../bin
 	if use doc; then
 		dohtml -r compat_list/* || die
 	fi
-	insinto "${GAMES_DATADIR}/${PN}"
+	insinto "${GAMES_DATADIR}/pcsx2"
 	doins -r *.xml .pixmaps patches || die
 
-	insinto "${GAMES_DATADIR}/${PN}/Langs"
+	insinto "${GAMES_DATADIR}/pcsx2/Langs"
 	for x in ${LANGS}; do
 		if use linguas_${x}; then
 			[[ "${x/_/}" == "${x}" ]] && x=${x}_$(echo ${x} | tr 'a-z' 'A-Z')
