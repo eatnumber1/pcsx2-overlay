@@ -10,11 +10,12 @@ SRC_URI="mirror://sourceforge/pcsx2/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug nls sse3 sse mmx doc"
 
 DEPEND="sys-libs/zlib
 	>=x11-libs/gtk+-2
+	<=sys-devel/gcc-4.3.1-r99
 	x11-proto/xproto
 	nls? ( virtual/libintl )
 	!games-emulation/pcsx2-playground"

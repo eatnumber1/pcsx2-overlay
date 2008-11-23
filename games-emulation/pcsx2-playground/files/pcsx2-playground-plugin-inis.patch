@@ -1,17 +1,24 @@
-diff -ur Linux.old/ConfigDlg.cpp Linux/ConfigDlg.cpp
---- Linux.old/ConfigDlg.cpp	2008-11-08 10:27:23.350010796 -0500
-+++ Linux/ConfigDlg.cpp	2008-11-08 10:27:34.110048739 -0500
-@@ -50,13 +50,10 @@
- 	strcat(file, plugin); 
+--- configure.ac	2008-11-23 16:09:56.291356952 -0500
++++ /root/configure.ac	2008-11-23 16:09:15.449544075 -0500
+@@ -127,6 +127,13 @@
+ AC_CHECK_HEADER([libintl.h], [AC_DEFINE(ENABLE_NLS,1,[__x86_64__])])
+ fi
  
- 	drv = SysLoadLibrary(file);
--	getcwd(file, ARRAYSIZE(file)); /* store current dir */  
--	chdir(Config.PluginsDir); /* change dirs so that plugins can find their config file*/  
- 	if (drv == NULL) return;
- 
- 	conf = (void (*)()) SysLoadSym(drv, name);
- 	if (SysLibError() == NULL) conf(); 
--	chdir(file); /* change back*/      
- 	SysCloseLibrary(drv);
- }
- 
++AC_ARG_ENABLE(local-inis, AC_HELP_STRING([--enable-local-inis], [Enable local plugin inis]),
++localinis=$enableval, local-inis=yes)
++if test "x$localinis" == xyes
++then
++AC_DEFINE(LOCAL_PLUGIN_INIS)
++fi
++
+ AC_OUTPUT([
+  Makefile
+  DebugTools/Makefile
+@@ -149,4 +156,5 @@
+ echo "  Dev build?	           $devbuild"
+ echo "  Force sse3?	           $sse3"
+ echo "  Recompilers enabled?   $recbuild"
+-echo "  nls support?	       $nls"
+\ No newline at end of file
++echo "  nls support?	       $nls"
++echo "  local plugin inis?     $localinis"

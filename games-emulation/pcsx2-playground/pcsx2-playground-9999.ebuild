@@ -51,9 +51,6 @@ src_unpack() {
 	# Preserve custom CFLAGS passed to configure.
 	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 
-	# Add nls support to the configure script.
-	epatch "${FILESDIR}"/${PN}-add-nls.patch
-
 	# Allow plugin inis to be stored in ~/.pcsx2/inis.
 	epatch "${FILESDIR}"/${PN}-plugin-inis.patch
 
@@ -61,7 +58,7 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf
+	local myconf="--enable-local-inis"
 
 	if ! use x86 && ! use amd64; then
 		einfo "Recompiler not supported on this architecture. Disabling."
