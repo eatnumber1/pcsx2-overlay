@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/pcsx2/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-*"
 IUSE="debug nls sse3 sse mmx doc"
 
 DEPEND="sys-libs/zlib
