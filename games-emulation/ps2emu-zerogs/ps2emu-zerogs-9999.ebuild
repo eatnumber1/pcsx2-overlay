@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 EAPI="1"
-IUSE="debug sse2 +shaders"
+IUSE="debug sse2 shaders"
 
 DEPEND="media-gfx/nvidia-cg-toolkit
 	x11-libs/libX11
@@ -35,6 +35,10 @@ pkg_setup() {
 
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
+	fi
+
+	if use shaders; then
+		ewarn "If compilation fails, try recompiling with USE=\"-shaders\""
 	fi
 }
 

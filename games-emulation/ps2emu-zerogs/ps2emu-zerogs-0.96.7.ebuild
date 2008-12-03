@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/pcsx2/${PCSX2}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug sse2 +shaders"
+IUSE="debug sse2 shaders"
 EAPI="1"
 
 DEPEND="media-gfx/nvidia-cg-toolkit
@@ -38,6 +38,10 @@ pkg_setup() {
 
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
+	fi
+
+	if use shaders; then
+		ewarn "If compilation fails, try recompiling with USE=\"-shaders\""
 	fi
 }
 
