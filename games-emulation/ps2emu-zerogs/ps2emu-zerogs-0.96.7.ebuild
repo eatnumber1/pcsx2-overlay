@@ -20,6 +20,7 @@ DEPEND="media-gfx/nvidia-cg-toolkit
 	x11-libs/libX11
 	media-libs/glew
 	virtual/opengl
+	<=sys-devel/gcc-4.3.1-r99
 	media-libs/jpeg
 	sys-libs/zlib
 	x11-libs/libXxf86vm
