@@ -12,6 +12,7 @@ SVN_PCSX2_BINDIR="https://pcsx2.svn.sourceforge.net/svnroot/pcsx2/bin"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
+RESTRICT="nomirror"
 IUSE="debug nls sse3 sse mmx doc"
 
 DEPEND="sys-libs/zlib

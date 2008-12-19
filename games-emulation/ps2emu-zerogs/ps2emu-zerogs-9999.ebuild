@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 EAPI="1"
+RESTRICT="nomirror"
 IUSE="debug sse2 shaders"
 
 DEPEND="media-gfx/nvidia-cg-toolkit

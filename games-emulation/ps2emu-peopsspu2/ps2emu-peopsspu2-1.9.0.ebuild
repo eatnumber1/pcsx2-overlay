@@ -12,6 +12,7 @@ SRC_URI="mirror://sourceforge/pcsx2/${PCSX2}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+RESTRICT="nomirror"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa oss"
 

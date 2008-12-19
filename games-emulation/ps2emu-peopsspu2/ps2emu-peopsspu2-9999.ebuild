@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="alsa oss"
+RESTRICT="nomirror"
 
 DEPEND="alsa? ( media-libs/alsa-lib )"
 

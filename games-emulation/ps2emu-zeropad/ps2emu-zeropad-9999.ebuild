@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="debug joystick"
+RESTRICT="nomirror"
 
 DEPEND=">=x11-libs/gtk+-2
 	x11-proto/xproto

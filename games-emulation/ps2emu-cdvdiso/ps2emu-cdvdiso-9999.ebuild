@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc"
+RESTRICT="nomirror"
 
 DEPEND=">=app-arch/bzip2-1.0.0
 	>=sys-libs/zlib-1.1.3

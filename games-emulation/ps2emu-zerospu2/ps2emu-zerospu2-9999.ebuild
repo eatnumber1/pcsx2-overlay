@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="debug"
+RESTRICT="nomirror"
 
 DEPEND="media-libs/alsa-lib
 	>=x11-libs/gtk+-2"
