@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/${PN}"
+SVN_PCSX2_URI="http://${PN}.googlecode.com/svn/trunk"
+ESVN_REPO_URI="${SVN_PCSX2_URI}/pcsx2"
 inherit games autotools eutils subversion
 
 DESCRIPTION="PlayStation2 emulator"
 HOMEPAGE="http://www.pcsx2.net/"
-SVN_PCSX2_BINDIR="https://pcsx2.svn.sourceforge.net/svnroot/${PN}/bin"
+SVN_PCSX2_BINDIR="${SVN_PCSX2_URI}/bin"
 
 LICENSE="GPL-2"
 SLOT="0"
