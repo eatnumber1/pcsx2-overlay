@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-PCSX2PP_SVN_URI="http://${PN}.googlecode.com/svn/trunk"
-ESVN_REPO_URI="${PCSX2PP_SVN_URI}/pcsx2"
+SVN_PCSX2PP_URI="http://${PN}.googlecode.com/svn/trunk"
+ESVN_REPO_URI="${SVN_PCSX2PP_URI}/pcsx2"
 inherit games autotools eutils subversion
 
 DESCRIPTION="PlayStation2 emulator"
 HOMEPAGE="http://www.pcsx2.net/"
-SVN_PCSX2PP_BINDIR="${PCSX2PP_SVN_URI}/bin"
+SVN_PCSX2PP_BINDIR="${SVN_PCSX2PP_URI}/bin"
 
 LICENSE="GPL-2"
 SLOT="0"
