@@ -2,18 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="http://${PN}.googlecode.com/svn/trunk/pcsx2"
+PCSX2PP_SVN_URI="http://${PN}.googlecode.com/svn/trunk"
+ESVN_REPO_URI="${PCSX2PP_SVN_URI}/pcsx2"
 inherit games autotools eutils subversion
 
 DESCRIPTION="PlayStation2 emulator"
 HOMEPAGE="http://www.pcsx2.net/"
-SVN_PCSX2_BINDIR="https://pcsx2.svn.sourceforge.net/svnroot/pcsx2/bin"
+SVN_PCSX2PP_BINDIR="${PCSX2PP_SVN_URI}/bin"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 RESTRICT="nomirror"
-IUSE="debug nls sse3 sse mmx doc"
+IUSE="debug nls sse3 sse4 sse mmx doc"
 
 DEPEND="sys-libs/zlib
 	>=x11-libs/gtk+-2
@@ -46,20 +47,14 @@ pkg_setup() {
 
 src_unpack() {
 	subversion_src_unpack
-	subversion_fetch ${SVN_PCSX2_BINDIR} "../bin"
+	subversion_fetch ${SVN_PCSX2PP_BINDIR} "../bin"
 	cd "${S}"
-
-	# Preserve custom CFLAGS passed to configure.
-	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
-
-	# Allow plugin inis to be stored in ~/.pcsx2/inis.
-	epatch "${FILESDIR}"/${PN}-plugin-inis.patch
 
 	eautoreconf -v --install || die
 }
 
 src_compile() {
-	local myconf="--enable-local-inis"
+	local myconf="--enable-local-inis --enable-customcflags"
 
 	if ! use x86 && ! use amd64; then
 		einfo "Recompiler not supported on this architecture. Disabling."
@@ -74,6 +69,7 @@ src_compile() {
 		$(use_enable debug) \
 		$(use_enable nls) \
 		$(use_enable sse3) \
+		$(use_enable sse4) \
 		${myconf} \
 		|| die
 

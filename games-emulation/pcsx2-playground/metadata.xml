@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
-<maintainer><email>eatnumber1@gmail.com</email></maintainer>
+	<herd>
+		no-herd
+	</herd>
+	<maintainer>
+		<email>
+			eatnumber1@gmail.com
+		</email>
+	</maintainer>
+	<use>
+		<flag name='sse4'>
+			Force sse4 detection on CPUs.
+		</flag>
+	</use>
 </pkgmetadata>

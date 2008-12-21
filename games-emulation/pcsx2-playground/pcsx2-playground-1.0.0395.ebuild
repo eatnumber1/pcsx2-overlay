@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="nomirror"
-IUSE="debug nls sse3 sse mmx doc"
+IUSE="debug nls sse3 sse4 sse mmx doc"
 
 DEPEND="sys-libs/zlib
 	>=x11-libs/gtk+-2
@@ -75,6 +75,7 @@ src_compile() {
 		$(use_enable debug) \
 		$(use_enable nls) \
 		$(use_enable sse3) \
+		$(use_enable sse4) \
 		${myconf} \
 		|| die
 
