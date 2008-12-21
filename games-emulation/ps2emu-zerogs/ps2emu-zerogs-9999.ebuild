@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/pcsx2/plugins/gs/zerogs/opengl"
+ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/trunk/plugins/gs/zerogs/opengl"
 inherit eutils games subversion autotools flag-o-matic
 
 DESCRIPTION="PS2Emu ZeroGS OpenGL plugin"

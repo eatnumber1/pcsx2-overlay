@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="https://pcsx2.svn.sourceforge.net/svnroot/pcsx2/plugins/cdvd/CDVDlinuz"
+ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/trunk/plugins/cdvd/CDVDlinuz"
 inherit eutils games subversion flag-o-matic
 
 DESCRIPTION="PS2Emu CDVD plugin"
