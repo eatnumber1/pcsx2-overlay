@@ -66,10 +66,10 @@ src_compile() {
 	local myconf
 
 	if ! use x86 && ! use amd64; then
-		einfo "Recompiler not supported on this architecture. Disabling."
+		ewarn "Recompiler not supported on this architecture. Disabling."
 		myconf=" --disable-recbuild"
 	elif ! use mmx || ! use sse; then
-		einfo "Recompiler requires USE=\"mmx sse\". Disabling."
+		ewarn "Recompiler requires USE=\"mmx sse\". Disabling."
 		myconf=" --disable-recbuild"
 	fi
 
