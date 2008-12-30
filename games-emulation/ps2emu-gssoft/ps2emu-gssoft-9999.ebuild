@@ -5,7 +5,7 @@
 ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/trunk/plugins/gs/GSsoft"
 inherit eutils games subversion autotools
 
-DESCRIPTION="PS2Emu null sound plugin"
+DESCRIPTION="PS2Emu OpenGL plugin"
 HOMEPAGE="http://www.pcsx2.net/"
 
 LICENSE="GPL-2"
