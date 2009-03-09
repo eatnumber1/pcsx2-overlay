@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
-<maintainer><email>eatnumber1@gmail.com</email></maintainer>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>russ@eatnumber1.com</email>
+	</maintainer>
+	<use>
+		<flag name='sse3'>Enable optimizations using the sse3 instruction set</flag>
+		<flag name='sse4'>Enable optimizations using the sse4 instruction set</flag>
+	</use>
 </pkgmetadata>
