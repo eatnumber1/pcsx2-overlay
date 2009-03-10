@@ -18,7 +18,7 @@ SRC_URI="x86? (
 LICENSE="NVIDIA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="multilib"
 RESTRICT="strip"
 
 if has_multilib_profile && use amd64; then
