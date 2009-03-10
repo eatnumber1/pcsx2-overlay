@@ -1,5 +1,14 @@
---- Makefile.bak	2008-08-10 13:18:48.000000000 -0400
-+++ Makefile	2008-08-10 13:19:19.000000000 -0400
+--- Makefile.old	2009-03-09 23:14:39.313055287 -0400
++++ Makefile	2009-03-09 23:16:39.331070388 -0400
+@@ -1,7 +1,7 @@
+ 
+ PLUGIN = libUSBnull.so
+ CFG = cfgUSBnull
+-CFLAGS+= -fPIC -Wall -I. -I.. -O3 -fomit-frame-pointer -fno-strict-aliasing
++CFLAGS+= -fPIC -Wall -I. -I.. -fno-strict-aliasing
+ OBJS = ../USB.o
+ OBJS+= Config.o Linux.o 
+ CFGOBJS = conf.o interface.o support.o
 @@ -11,20 +11,16 @@
  CFLAGS+= $(shell pkg-config --cflags gtk+-2.0)    -D__LINUX__
  CFGLIBS = $(shell pkg-config --libs gtk+-2.0)
