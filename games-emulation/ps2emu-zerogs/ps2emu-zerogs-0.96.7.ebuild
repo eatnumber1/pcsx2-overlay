@@ -3,13 +3,12 @@
 # $Header: $
 
 EAPI=2
-#ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/zerogs/opengl"
-#inherit eutils games subversion flag-o-matic multilib autotools
 inherit eutils games flag-o-matic multilib autotools
 
 DESCRIPTION="PS2Emu ZeroGS OpenGL plugin"
 HOMEPAGE="http://www.pcsx2.net/"
-SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PV}_source.7z"
+PCSX2_VER="0.9.6"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,6 +17,7 @@ RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
 DEPEND="
+	app-arch/p7zip
 	x86? (
 		x11-libs/libX11
 		media-gfx/nvidia-cg-toolkit
@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
 #S="${WORKDIR}/opengl"
-S="${WORKDIR}/rc_${PV}/plugins/zerogs/opengl"
+S="${WORKDIR}/rc_${PCSX2_VER}/plugins/zerogs/opengl"
 
 pkg_setup() {
 	games_pkg_setup
@@ -96,7 +96,7 @@ src_compile() {
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	insinto "$(games_get_libdir)/ps2emu/plugins"
-	doexe libZeroGSogl.so.* || die
+	newexe libZeroGSogl.so.* libZeroGSogl.so || die
 	if use debug; then
 		doins ps2hw.fx || die
 		doins ctx1/ps2hw_ctx.fx || die

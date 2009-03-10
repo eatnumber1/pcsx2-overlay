@@ -1,13 +1,7 @@
---- Makefile.old	2009-03-09 22:56:16.890273800 -0400
-+++ Makefile	2009-03-09 22:57:57.851667661 -0400
-@@ -8,31 +8,28 @@
- all: spu2PeopsOSS
- install: all
- 
--# Set to TRUE to build the ALSA support
--USEALSA = FALSE
- # Set to TRUE to disable the thread library support - helpful for some Linux distros
- NOTHREADLIB = FALSE
+diff -ur PeopsSPU2.bak/Makefile PeopsSPU2/Makefile
+--- PeopsSPU2.bak/Makefile	2009-03-10 10:59:42.824271835 -0400
++++ PeopsSPU2/Makefile	2009-03-10 11:14:39.987110387 -0400
+@@ -15,24 +15,23 @@
  
  ##############################################################################
  

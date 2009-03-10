@@ -3,21 +3,20 @@
 # $Header: $
 
 EAPI=2
-SVN_PCSX2_URI="http://${PN}.googlecode.com/svn/tags/0.9.6"
-ESVN_REPO_URI="${SVN_PCSX2_URI}/pcsx2"
-inherit games autotools eutils subversion flag-o-matic
+inherit games autotools eutils multilib
 
 DESCRIPTION="PlayStation2 emulator"
 HOMEPAGE="http://www.pcsx2.net/"
-SVN_PCSX2_BINDIR="${SVN_PCSX2_URI}/bin"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PV}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="mirror"
+RESTRICT="primaryuri"
 IUSE="debug nls sse3 sse sse4 mmx doc"
 
 DEPEND="
+	app-arch/p7zip
 	x11-proto/xproto
 	x86? (
 		sys-libs/zlib
@@ -37,7 +36,7 @@ for i in ${LANGS}; do
 	IUSE="${IUSE} linguas_${i}"
 done
 
-S="${WORKDIR}/${P}/${PN}"
+S="${WORKDIR}/rc_${PV}/${PN}"
 
 pkg_setup() {
 	local x
@@ -58,12 +57,6 @@ pkg_setup() {
 		die "No multilib profile."
 	fi
 	use amd64 && multilib_toolchain_setup x86
-}
-
-src_unpack() {
-	subversion_src_unpack
-	subversion_fetch ${SVN_PCSX2_BINDIR} "../bin"
-	cd "${S}"
 }
 
 src_prepare() {
@@ -94,6 +87,8 @@ src_configure() {
 
 src_install() {
 	local x
+
+	find ../bin -name "\.svn" -type d -exec rm -r {} +
 
 	keepdir "$(games_get_libdir)/ps2emu/plugins"
 	if use doc; then

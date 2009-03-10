@@ -1,5 +1,6 @@
---- Makefile.old	2009-03-09 22:44:28.980023052 -0400
-+++ Makefile	2009-03-09 22:45:22.431055292 -0400
+diff -ur FWnull.bak/Linux/Makefile FWnull/Linux/Makefile
+--- FWnull.bak/Linux/Makefile	2009-03-10 10:53:17.716073927 -0400
++++ FWnull/Linux/Makefile	2009-03-10 10:54:05.606330272 -0400
 @@ -1,7 +1,7 @@
  
  PLUGIN = libFWnull.so

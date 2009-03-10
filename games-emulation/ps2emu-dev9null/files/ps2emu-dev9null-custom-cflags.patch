@@ -1,5 +1,6 @@
---- Makefile.old	2009-03-09 22:36:38.317236364 -0400
-+++ Makefile	2009-03-09 22:37:46.610375249 -0400
+diff -ur src.bak/Makefile src/Makefile
+--- src.bak/Makefile	2009-03-10 10:48:28.555611267 -0400
++++ src/Makefile	2009-03-10 10:49:02.937023955 -0400
 @@ -1,8 +1,5 @@
 -
 -CC = gcc

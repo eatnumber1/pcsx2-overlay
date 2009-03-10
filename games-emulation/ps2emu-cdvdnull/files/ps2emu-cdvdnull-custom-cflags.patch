@@ -1,5 +1,6 @@
---- Makefile.bak	2009-03-09 22:17:13.883058186 -0400
-+++ Makefile	2009-03-09 22:17:52.000169907 -0400
+diff -ur Src.bak/Makefile Src/Makefile
+--- Src.bak/Makefile	2009-03-10 10:45:23.841725595 -0400
++++ Src/Makefile	2009-03-10 10:46:06.749274104 -0400
 @@ -8,11 +8,9 @@
  
  PLUGIN = libCDVDnull.so

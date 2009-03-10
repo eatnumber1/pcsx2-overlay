@@ -3,19 +3,21 @@
 # $Header: $
 
 EAPI=2
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/PeopsSPU2"
-inherit eutils games subversion flag-o-matic multilib
+inherit eutils games multilib
 
 DESCRIPTION="P.E.Op.S PS2Emu sound plugin"
 HOMEPAGE="http://www.pcsx2.net/"
+PCSX2_VER="0.9.6"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa oss"
-RESTRICT="mirror"
+RESTRICT="primaryuri"
 
 DEPEND="
+	app-arch/p7zip
 	alsa? (
 		amd64? (
 			app-emulation/emul-linux-x86-soundlibs[alsa]
@@ -33,7 +35,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/PeopsSPU2"
+S="${WORKDIR}/rc_${PCSX2_VER}/plugins/PeopsSPU2"
 
 pkg_setup() {
 	games_pkg_setup
@@ -68,11 +70,11 @@ src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
 
 	if use alsa; then
-		newexe libspu2PeopsALSA.so.* libspu2PeopsALSA.so.${PV} || die
+		newexe libspu2PeopsALSA.so.* libspu2PeopsALSA.so || die
 	fi
 
 	if use oss; then
-		newexe libspu2PeopsOSS.so.* libspu2PeopsOSS.so.${PV} || die
+		newexe libspu2PeopsOSS.so.* libspu2PeopsOSS.so || die
 	fi
 
 	prepgamesdirs

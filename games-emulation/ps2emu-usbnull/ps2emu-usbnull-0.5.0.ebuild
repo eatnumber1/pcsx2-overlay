@@ -2,26 +2,33 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
 inherit eutils games multilib
 
-PCSX2="pcsx2-0.9.4"
-
-DESCRIPTION="PS2Emu PAD plugin"
+DESCRIPTION="PS2Emu null USB plugin"
 HOMEPAGE="http://www.pcsx2.net/"
-SRC_URI="mirror://sourceforge/pcsx2/${PCSX2}.tar.gz"
+PCSX2_VER="0.9.6"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
-RESTRICT="primaryuri"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc"
+RESTRICT="primaryuri"
 
-DEPEND=">=x11-libs/gtk+-2"
+DEPEND="
+	app-arch/p7zip
+	x86? (
+		>=x11-libs/gtk+-2
+	)
+	amd64? (
+		app-emulation/emul-linux-x86-gtklibs
+	)"
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/${PCSX2}/plugins/pad/PADwin/Src"
+S="${WORKDIR}/rc_${PCSX2_VER}/plugins/USBnull/Linux"
 
 pkg_setup() {
 	games_pkg_setup
@@ -33,16 +40,15 @@ pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 }
 
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
-	doexe libPADwin.so || die
+	doexe libUSBnull.so || die
+	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
+	doexe cfgUSBnull || die
 	if use doc; then
 		dodoc ../ReadMe.txt || die
 	fi

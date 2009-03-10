@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,14 +13,17 @@ SRC_URI="http://pcsx2-playground.googlecode.com/files/${PLAYGROUND}.7z"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="nomirror"
+RESTRICT="primaryuri"
 IUSE="debug nls sse3 sse4 sse mmx doc"
 
-DEPEND="sys-libs/zlib
+DEPEND="
+	app-arch/p7zip
+	sys-libs/zlib
 	>=x11-libs/gtk+-2
 	x11-proto/xproto
 	nls? ( virtual/libintl )
 	!games-emulation/pcsx2"
+RDEPEND="${DEPEND}"
 
 LANGS="ar bg cz de du el es fr hb it ja pe pl po po_BR ro ru sh sw tc tr"
 

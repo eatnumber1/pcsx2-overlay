@@ -1,5 +1,6 @@
---- configure.ac.bak	2008-08-10 12:57:33.000000000 -0400
-+++ configure.ac	2008-08-10 13:04:53.000000000 -0400
+diff -ur zerospu2.bak/configure.ac zerospu2/configure.ac
+--- zerospu2.bak/configure.ac	2009-03-10 12:01:32.034307213 -0400
++++ zerospu2/configure.ac	2009-03-10 12:03:03.474084290 -0400
 @@ -24,10 +24,6 @@
  AC_SUBST(ZEROSPU2_RELEASE)
  AC_SUBST(ZEROSPU2_SONAME)
@@ -11,21 +12,24 @@
  dnl Check for debug build
  AC_MSG_CHECKING(debug build)
  AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug], [debug build]),
-@@ -35,14 +31,11 @@
+@@ -35,14 +31,14 @@
  if test "x$debug" == xyes
  then
   AC_DEFINE(_DEBUG,1,[_DEBUG])
-- CFLAGS+="-g "
-- CPPFLAGS+="-g "
-- CXXFLAGS+="-g "
+- CFLAGS+="-g -fPIC Wall  -Wno-unused-value "
+- CPPFLAGS+="-g -fPIC -Wall  -Wno-unused-value "
+- CXXFLAGS+="-g -fPIC -Wall  -Wno-unused-value "
++ CFLAGS+=" -fPIC Wall  -Wno-unused-value "
++ CPPFLAGS+=" -fPIC -Wall  -Wno-unused-value "
++ CXXFLAGS+=" -fPIC -Wall  -Wno-unused-value "
  else
   AC_DEFINE(NDEBUG,1,[NDEBUG])
-- CFLAGS+="-O3 -fomit-frame-pointer "
-- CPPFLAGS+="-O3 -fomit-frame-pointer "
-- CXXFLAGS+="-O3 -fomit-frame-pointer "
-+ CFLAGS+=" -O3 -fomit-frame-pointer "
-+ CPPFLAGS+=" -O3 -fomit-frame-pointer "
-+ CXXFLAGS+=" -O3 -fomit-frame-pointer "
+- CFLAGS+="-O3 -fomit-frame-pointer -fPIC -Wall  -Wno-unused-value "
+- CPPFLAGS+="-O3 -fomit-frame-pointer -fPIC -Wall  -Wno-unused-value "
+- CXXFLAGS+="-O3 -fomit-frame-pointer -fPIC -Wall  -Wno-unused-value "
++ CFLAGS+=" -fPIC -Wall  -Wno-unused-value "
++ CPPFLAGS+=" -fPIC -Wall  -Wno-unused-value "
++ CXXFLAGS+=" -fPIC -Wall  -Wno-unused-value "
  fi
  AM_CONDITIONAL(DEBUGBUILD, test x$debug = xyes)
  AC_MSG_RESULT($debug)

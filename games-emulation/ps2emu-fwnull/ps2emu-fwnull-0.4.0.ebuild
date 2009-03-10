@@ -3,24 +3,32 @@
 # $Header: $
 
 EAPI=2
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/dev9null"
-inherit eutils games subversion flag-o-matic multilib
+inherit eutils games multilib
 
-DESCRIPTION="PS2Emu null DEV9 plugin"
+DESCRIPTION="PS2Emu null FireWire plugin"
 HOMEPAGE="http://www.pcsx2.net/"
+PCSX2_VER="0.9.6"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
-RESTRICT="mirror"
+RESTRICT="primaryuri"
 
-DEPEND=""
+DEPEND="
+	app-arch/p7zip
+	x86? (
+		>=x11-libs/gtk+-2
+	)
+	amd64? (
+		app-emulation/emul-linux-x86-gtklibs
+	)"
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/dev9null/src"
+S="${WORKDIR}/rc_${PCSX2_VER}/plugins/FWnull/Linux"
 
 pkg_setup() {
 	games_pkg_setup
@@ -32,18 +40,15 @@ pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
 }
 
-src_unpack() {
-	local S="${WORKDIR}/dev9null"
-	subversion_src_unpack
-}
-
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
+	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
-	doexe libDEV9null.so || die
+	doexe libFWnull.so || die
+	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
+	doexe cfgFWnull || die
 	if use doc; then
 		dodoc ../ReadMe.txt || die
 	fi

@@ -3,34 +3,36 @@
 # $Header: $
 
 EAPI=2
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/CDVDnull"
-inherit eutils games subversion multilib flag-o-matic
+inherit eutils games multilib autotools
 
-DESCRIPTION="PS2Emu null CDVD plugin"
+DESCRIPTION="Zero PS2Emu ALSA sound plugin"
 HOMEPAGE="http://www.pcsx2.net/"
+PCSX2_VER="0.9.6"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc"
-RESTRICT="mirror"
+KEYWORDS="~x86 ~amd64"
+IUSE="debug"
+RESTRICT="primaryuri"
 
 DEPEND="
+	app-arch/p7zip
 	x86? (
+		media-libs/alsa-lib
 		>=x11-libs/gtk+-2
 	)
 	amd64? (
+		app-emulation/emul-linux-x86-soundlibs
 		app-emulation/emul-linux-x86-gtklibs
 	)"
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/CDVDnull/Src"
+S="${WORKDIR}/rc_${PCSX2_VER}/plugins/zerospu2"
 
 pkg_setup() {
-	games_pkg_setup
-
 	if use amd64 && ! has_multilib_profile; then
 		eerror "You must be on a multilib profile to use pcsx2!"
 		die "No multilib profile."
@@ -38,20 +40,19 @@ pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
 }
 
-src_unpack() {
-	local S="${WORKDIR}/CDVDnull"
-	subversion_src_unpack
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
+	eautoreconf -v --install || die
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-custom-cflags.patch" || die "epatch failed"
+src_configure() {
+	egamesconf  \
+		$(use_enable debug) \
+		|| die
 }
 
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
-	doexe libCDVDnull.so || die
-	if use doc; then
-		dodoc ../ReadMe.txt || die
-	fi
+	newexe libZeroSPU2.so.* libZeroSPU2.so
 	prepgamesdirs
 }

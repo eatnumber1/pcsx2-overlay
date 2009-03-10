@@ -3,21 +3,23 @@
 # $Header: $
 
 EAPI=2
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/CDVDisoEFP"
-inherit eutils games subversion flag-o-matic multilib
+inherit eutils games multilib
 
-DESCRIPTION="PS2Emu ISO CDVD EFP plugin"
+DESCRIPTION="PS2Emu null CDVD plugin"
 HOMEPAGE="http://www.pcsx2.net/"
+PCSX2_VER="0.9.6"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
-RESTRICT="mirror"
+RESTRICT="primaryuri"
 
 DEPEND="
+	app-arch/p7zip
 	x86? (
-		>=x11-libs/gtk+-2.6.1
+		>=x11-libs/gtk+-2
 	)
 	amd64? (
 		app-emulation/emul-linux-x86-gtklibs
@@ -26,11 +28,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/CDVDisoEFP/src/Linux"
+S="${WORKDIR}/rc_${PCSX2_VER}/plugins/CDVDnull/Src"
 
 pkg_setup() {
 	games_pkg_setup
-	append-ldflags -Wl,--no-as-needed
 
 	if use amd64 && ! has_multilib_profile; then
 		eerror "You must be on a multilib profile to use pcsx2!"
@@ -39,22 +40,15 @@ pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
 }
 
-src_unpack() {
-	local S="${WORKDIR}/CDVDisoEFP"
-	subversion_src_unpack
-}
-
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-custom-cflags.patch" || die "epatch failed"
 }
 
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
-	doexe libCDVDisoEFP.so || die
-	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
-	doexe cfgCDVDisoEFP || die
+	doexe libCDVDnull.so || die
 	if use doc; then
-		dodoc ../../readme.txt ../../ChangeLog.txt || die
+		dodoc ../ReadMe.txt || die
 	fi
 	prepgamesdirs
 }

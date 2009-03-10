@@ -3,32 +3,32 @@
 # $Header: $
 
 EAPI=2
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/CDVDiso"
-inherit eutils games subversion flag-o-matic multilib
+inherit eutils games multilib
 
-DESCRIPTION="PS2Emu ISO CDVD plugin"
+DESCRIPTION="PS2Emu null sound plugin"
 HOMEPAGE="http://www.pcsx2.net/"
+PCSX2_VER="0.9.6"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc"
-RESTRICT="mirror"
+RESTRICT="primaryuri"
 
-DEPEND=">=app-arch/bzip2-1.0.0
+DEPEND="
+	app-arch/p7zip
 	x86? (
-		>=sys-libs/zlib-1.1.3
-		>=x11-libs/gtk+-1.2.5
+		>=x11-libs/gtk+-2
 	)
 	amd64? (
-		app-emulation/emul-linux-x86-baselibs
 		app-emulation/emul-linux-x86-gtklibs
 	)"
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/CDVDiso/src/Linux"
+S="${WORKDIR}/rc_${PCSX2_VER}/plugins/SPU2null/Src"
 
 pkg_setup() {
 	games_pkg_setup
@@ -40,22 +40,15 @@ pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
 }
 
-src_unpack() {
-	local S="${WORKDIR}/CDVDiso"
-	subversion_src_unpack
-}
-
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-custom-cflags.patch" || die "epatch failed"
+	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
 }
 
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
-	doexe libCDVDiso.so || die
-	exeinto "$(games_get_libdir)/ps2emu/plugins/cfg"
-	doexe cfgCDVDiso || die
+	doexe libSPU2null.so || die
 	if use doc; then
-		dodoc ../../ReadMe.txt || die
+		dodoc ../ReadMe.txt Changelog.txt || die
 	fi
 	prepgamesdirs
 }

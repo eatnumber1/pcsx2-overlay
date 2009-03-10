@@ -1,6 +1,6 @@
-diff -ur a/src/Linux/Makefile b/src/Linux/Makefile
---- a/src/Linux/Makefile	2009-03-09 20:27:51.151324540 -0400
-+++ b/src/Linux/Makefile	2009-03-09 20:28:19.446278009 -0400
+diff -ur CDVDiso.bak/src/Linux/Makefile CDVDiso/src/Linux/Makefile
+--- CDVDiso.bak/src/Linux/Makefile	2009-03-10 10:15:49.332023141 -0400
++++ CDVDiso/src/Linux/Makefile	2009-03-10 10:16:35.070024709 -0400
 @@ -1,10 +1,7 @@
 -
 -CC = gcc

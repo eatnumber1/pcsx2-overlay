@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/glew/glew-1.4.0.ebuild,v 1.6 2008/01/15 18:01:50 armin76 Exp $
+# $Header: $
 
 inherit eutils multilib toolchain-funcs
 
@@ -32,7 +32,6 @@ src_compile(){
 		mkdir 32bit 64bit
 		cp -r "${PN}" 32bit/
 		cp -r "${PN}" 64bit/
-		rm -r "${PN}"
 		S="${WORKDIR}"
 		cd 32bit/${PN}
 		pwd

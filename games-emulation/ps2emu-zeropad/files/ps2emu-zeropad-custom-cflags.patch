@@ -1,5 +1,6 @@
---- configure.ac.bak	2008-08-10 13:22:14.000000000 -0400
-+++ configure.ac	2008-08-10 13:22:26.000000000 -0400
+diff -ur zeropad.bak/configure.ac zeropad/configure.ac
+--- zeropad.bak/configure.ac	2009-03-10 11:33:23.120107815 -0400
++++ zeropad/configure.ac	2009-03-10 11:39:42.403376575 -0400
 @@ -24,9 +24,6 @@
  AC_SUBST(ZEROPAD_RELEASE)
  AC_SUBST(ZEROPAD_SONAME)
@@ -10,7 +11,7 @@
  dnl Check for debug build
  AC_MSG_CHECKING(debug build)
  AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug], [debug build]),
-@@ -34,12 +31,10 @@
+@@ -34,12 +31,8 @@
  if test "x$debug" == xyes
  then
   AC_DEFINE(_DEBUG,1,[_DEBUG])
@@ -20,8 +21,6 @@
   AC_DEFINE(NDEBUG,1,[NDEBUG])
 - CFLAGS+="-O2 -fomit-frame-pointer "
 - CXXFLAGS+="-O2 -fomit-frame-pointer "
-+ CFLAGS+=" -O2 -fomit-frame-pointer "
-+ CXXFLAGS+=" -O2 -fomit-frame-pointer "
  fi
  AM_CONDITIONAL(DEBUGBUILD, test x$debug = xyes)
  AC_MSG_RESULT($debug)

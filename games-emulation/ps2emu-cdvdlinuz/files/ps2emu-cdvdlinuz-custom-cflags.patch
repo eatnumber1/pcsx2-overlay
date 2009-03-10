@@ -1,5 +1,6 @@
---- Makefile.bak	2008-08-10 04:34:13.000000000 -0400
-+++ Makefile	2008-08-10 04:36:36.000000000 -0400
+diff -ur Src.bak/Linux/Makefile Src/Linux/Makefile
+--- Src.bak/Linux/Makefile	2009-03-10 10:35:14.064056623 -0400
++++ Src/Linux/Makefile	2009-03-10 10:36:38.805024139 -0400
 @@ -21,8 +21,6 @@
  	../convert.h ../ini.h ../version.h
  
@@ -9,21 +10,21 @@
  GTKFLAGS = $(shell pkg-config --cflags gtk+-2.0)
  
  //GTKFLAGS += -DG_DISABLE_DEPRECATED \
-@@ -43,21 +41,19 @@
+@@ -43,21 +41,21 @@
  
  plugin: $(PLUGINOBJS) $(SHAREDOBJS)
  #	rm -f $(PLUGIN)
 -	$(CC) -shared -Wl,-soname,$(PLUGIN) $(PLUGINFLAGS) $(PLUGINLIBS) \
 +	$(CC) -shared -Wl,-soname,$(PLUGIN) $(PLUGINFLAGS) $(CFLAGS) $(LDFLAGS) $(PLUGINLIBS) \
  	$(PLUGINOBJS) $(SHAREDOBJS) -o $(PLUGIN)
--	strip --strip-unneeded --strip-debug $(PLUGIN)
+ 	strip --strip-unneeded --strip-debug $(PLUGIN)
  
  cfg: $(CFGOBJS) $(SHAREDOBJS)
  #	rm -f $(CFG)
 -	$(CC) $(CFGFLAGS) $(GTKFLAGS) $(CFGLIBS) $(GTKLIBS) \
 +	$(CC) $(CFGFLAGS) $(GTKFLAGS) $(CFLAGS) $(LDFLAGS) $(CFGLIBS) $(GTKLIBS) \
  	$(CFGOBJS) $(SHAREDOBJS) -o $(CFG)
--	strip $(CFG)
+ 	strip $(CFG)
  
  $(PLUGINOBJS) $(SHAREDOBJS): %.o: %.c
 -	$(CC) $(PLUGINFLAGS) -c $< -o $@
