@@ -3,16 +3,18 @@
 # $Header: $
 
 EAPI=2
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/zerogs/opengl"
-inherit eutils games subversion flag-o-matic multilib autotools
+#ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/zerogs/opengl"
+#inherit eutils games subversion flag-o-matic multilib autotools
+inherit eutils games flag-o-matic multilib autotools
 
 DESCRIPTION="PS2Emu ZeroGS OpenGL plugin"
 HOMEPAGE="http://www.pcsx2.net/"
+SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PV}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="mirror"
+RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
 DEPEND="
@@ -40,7 +42,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/opengl"
+#S="${WORKDIR}/opengl"
+S="${WORKDIR}/rc_${PV}/plugins/zerogs/opengl"
 
 pkg_setup() {
 	games_pkg_setup

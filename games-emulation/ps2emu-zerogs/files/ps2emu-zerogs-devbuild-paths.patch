@@ -1,6 +1,6 @@
 diff -ur opengl.bak/zerogs.cpp opengl/zerogs.cpp
---- opengl.bak/zerogs.cpp	2009-03-09 23:29:19.913696331 -0400
-+++ opengl/zerogs.cpp	2009-03-09 23:35:09.099272208 -0400
+--- opengl.bak/zerogs.cpp	2009-03-10 07:39:18.035274140 -0400
++++ opengl/zerogs.cpp	2009-03-10 07:46:57.406022577 -0400
 @@ -112,8 +112,8 @@
  char* EFFECT_DIR = "C:\\programming\\ps2dev\\zerogs\\opengl\\";
  char* EFFECT_NAME = "C:\\programming\\ps2dev\\zerogs\\opengl\\ps2hw.fx";
@@ -12,7 +12,7 @@ diff -ur opengl.bak/zerogs.cpp opengl/zerogs.cpp
  #endif
  
  #endif
-@@ -1339,24 +1339,17 @@
+@@ -1339,24 +1339,16 @@
  	char curwd[255];
  	getcwd(curwd, ARRAY_SIZE(curwd));
  	
@@ -31,15 +31,14 @@ diff -ur opengl.bak/zerogs.cpp opengl/zerogs.cpp
 -			ERROR_LOG("Failed to find %s, try compiling a non-devbuild\n", EFFECT_NAME);
 -			return false;
 -		}
-+	    return false;
++		return false;
  	}
-+
  	fclose(f);
  
 -	sprintf(EFFECT_DIR, "%s/%s", curwd, tempstr);
 -	sprintf(EFFECT_NAME, "%sps2hw.fx", EFFECT_DIR);
-+	sprintf(EFFECT_DIR, "%s", tempstr);
-+	sprintf(EFFECT_NAME, "%s/ps2hw.fx", EFFECT_DIR);
++	sprintf(EFFECT_DIR, "%s", tempstr);
++	sprintf(EFFECT_NAME, "%s/ps2hw.fx", EFFECT_DIR);
  #endif
  
  #endif // RELEASE_TO_PUBLIC

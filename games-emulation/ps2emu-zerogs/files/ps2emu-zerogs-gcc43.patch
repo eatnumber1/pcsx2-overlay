@@ -1,6 +1,6 @@
 diff -ur opengl.bak/Mem.h opengl/Mem.h
---- opengl.bak/Mem.h	2009-03-09 23:29:19.899275257 -0400
-+++ opengl/Mem.h	2009-03-09 23:30:55.296023680 -0400
+--- opengl.bak/Mem.h	2009-03-10 07:39:18.034273213 -0400
++++ opengl/Mem.h	2009-03-10 07:40:39.959023796 -0400
 @@ -22,6 +22,9 @@
  #include <assert.h>
  #include <vector>
@@ -12,8 +12,8 @@ diff -ur opengl.bak/Mem.h opengl/Mem.h
  #define ROUND_UPPOW2(val, base)	(((val)+(base-1))&~(base-1))
  #define ROUND_DOWNPOW2(val, base)	((val)&~(base-1))
 diff -ur opengl.bak/ZeroGSShaders/zerogsshaders.cpp opengl/ZeroGSShaders/zerogsshaders.cpp
---- opengl.bak/ZeroGSShaders/zerogsshaders.cpp	2009-03-09 23:29:18.731277906 -0400
-+++ opengl/ZeroGSShaders/zerogsshaders.cpp	2009-03-09 23:30:33.556273178 -0400
+--- opengl.bak/ZeroGSShaders/zerogsshaders.cpp	2009-03-10 07:39:17.984273447 -0400
++++ opengl/ZeroGSShaders/zerogsshaders.cpp	2009-03-10 07:40:36.497272703 -0400
 @@ -5,6 +5,9 @@
  #include <stdio.h>
  #include <assert.h>
