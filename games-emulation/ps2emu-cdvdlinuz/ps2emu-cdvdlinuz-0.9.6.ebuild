@@ -1,39 +1,54 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/trunk/plugins/cdvd/CDVDlinuz"
-inherit eutils games subversion flag-o-matic
+EAPI=2
+ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/CDVDlinuz"
+inherit eutils games subversion flag-o-matic multilib
 
 DESCRIPTION="PS2Emu CDVD plugin"
 HOMEPAGE="http://www.pcsx2.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 IUSE="doc"
-RESTRICT="nomirror"
+RESTRICT="mirror"
 
 DEPEND="app-arch/bzip2
-	sys-libs/zlib
-	>=x11-libs/gtk+-2"
+	x86? (
+		>=sys-libs/zlib-1.1.3
+		>=x11-libs/gtk+-2
+	)
+	amd64? (
+		app-emulation/emul-linux-x86-baselibs
+		app-emulation/emul-linux-x86-gtklibs
+	)"
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/CDVDlinuz"
+S="${WORKDIR}/CDVDlinuz/Src/Linux"
 
 pkg_setup() {
 	games_pkg_setup
 
 	append-ldflags -Wl,--no-as-needed
+	if use amd64 && ! has_m32; then
+		eerror "You must be on a multilib profile to use pcsx2!"
+		die "No multilib profile."
+	fi
+	ABI="x86"
+	ABI_ALLOW="x86"
+	append-flags -m32
 }
 
 src_unpack() {
+	local S="${WORKDIR}/CDVDlinuz"
 	subversion_src_unpack
-	S="${S}/Src/Linux"
-	cd "${S}"
+}
 
+src_prepare() {
 	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
 }
 
