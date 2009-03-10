@@ -1,5 +1,6 @@
---- opengl/zerogs.cpp.orig	2008-06-08 22:12:33.000000000 -0400
-+++ opengl/zerogs.cpp	2008-06-08 22:15:37.000000000 -0400
+diff -ur opengl.bak/zerogs.cpp opengl/zerogs.cpp
+--- opengl.bak/zerogs.cpp	2009-03-09 23:29:19.913696331 -0400
++++ opengl/zerogs.cpp	2009-03-09 23:35:09.099272208 -0400
 @@ -112,8 +112,8 @@
  char* EFFECT_DIR = "C:\\programming\\ps2dev\\zerogs\\opengl\\";
  char* EFFECT_NAME = "C:\\programming\\ps2dev\\zerogs\\opengl\\ps2hw.fx";
@@ -11,34 +12,34 @@
  #endif
  
  #endif
-@@ -1335,25 +1335,17 @@
-     char curwd[255];
-     getcwd(curwd, ARRAY_SIZE(curwd));
- 
--    strcpy(tempstr, "../plugins/gs/zerogs/opengl/");
--    sprintf(EFFECT_NAME, "%sps2hw.fx", tempstr);
-+    strcpy(tempstr, curwd);
-+    sprintf(EFFECT_NAME, "%s/ps2hw.fx", tempstr);
-     FILE* f = fopen(EFFECT_NAME, "r");
-     if( f == NULL ) {
+@@ -1339,24 +1339,17 @@
+ 	char curwd[255];
+ 	getcwd(curwd, ARRAY_SIZE(curwd));
+ 	
+-	strcpy(tempstr, "../plugins/zerogs/opengl/");
+-	sprintf(EFFECT_NAME, "%sps2hw.fx", tempstr);
++	strcpy(tempstr, curwd);
++	sprintf(EFFECT_NAME, "%s/ps2hw.fx", tempstr);
+ 	FILE* f = fopen(EFFECT_NAME, "r");
+ 	if( f == NULL ) {
 -
--        strcpy(tempstr, "../../plugins/gs/zerogs/opengl/");
--        sprintf(EFFECT_NAME, "%sps2hw.fx", tempstr);
--        f = fopen(EFFECT_NAME, "r");
+-		strcpy(tempstr, "../../plugins/zerogs/opengl/");
+-		sprintf(EFFECT_NAME, "%sps2hw.fx", tempstr);
+-		f = fopen(EFFECT_NAME, "r");
 -
--        if( f == NULL ) {
--            ERROR_LOG("Failed to find %s, try compiling a non-devbuild\n", EFFECT_NAME);
--            return false;
--        }
-+        return false;
-     }
+-		if( f == NULL ) {
+-			ERROR_LOG("Failed to find %s, try compiling a non-devbuild\n", EFFECT_NAME);
+-			return false;
+-		}
++	    return false;
+ 	}
++
+ 	fclose(f);
  
-     fclose(f);
- 
--    sprintf(EFFECT_DIR, "%s/%s", curwd, tempstr);
--    sprintf(EFFECT_NAME, "%sps2hw.fx", EFFECT_DIR);
-+    sprintf(EFFECT_DIR, "%s", tempstr);
-+    sprintf(EFFECT_NAME, "%s/ps2hw.fx", EFFECT_DIR);
+-	sprintf(EFFECT_DIR, "%s/%s", curwd, tempstr);
+-	sprintf(EFFECT_NAME, "%sps2hw.fx", EFFECT_DIR);
++	sprintf(EFFECT_DIR, "%s", tempstr);
++	sprintf(EFFECT_NAME, "%s/ps2hw.fx", EFFECT_DIR);
  #endif
  
  #endif // RELEASE_TO_PUBLIC
