@@ -1,0 +1,14 @@
+diff -ur opengl.bak/Makefile.am opengl/Makefile.am
+--- opengl.bak/Makefile.am	2009-03-10 12:51:58.388023078 -0400
++++ opengl/Makefile.am	2009-03-10 12:58:07.905022348 -0400
+@@ -16,10 +16,6 @@
+ traplibdir=$(prefix)
+ 
+ 
+-if RELEASE_TO_PUBLIC
+-preext=r
+-endif
+-
+ EXEEXT=$(preext)@so_ext@
+ 
+ traplib_PROGRAMS=libZeroGSogl

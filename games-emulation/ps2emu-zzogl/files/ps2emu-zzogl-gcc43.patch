@@ -1,0 +1,13 @@
+diff -ur opengl.bak/Mem.h opengl/Mem.h
+--- opengl.bak/Mem.h	2009-03-10 12:51:58.428023001 -0400
++++ opengl/Mem.h	2009-03-10 12:52:05.208023833 -0400
+@@ -22,6 +22,9 @@
+ #include <assert.h>
+ #include <vector>
+ 
++#include <cstdlib>
++#include <cstring>
++
+ // works only when base is a power of 2
+ #define ROUND_UPPOW2(val, base)	(((val)+(base-1))&~(base-1))
+ #define ROUND_DOWNPOW2(val, base)	((val)&~(base-1))
