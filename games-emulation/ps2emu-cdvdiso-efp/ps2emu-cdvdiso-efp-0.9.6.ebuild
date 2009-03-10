@@ -1,8 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/trunk/plugins/cdvd/CDVDisoEFP"
+EAPI=2
+ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/CDVDisoEFP"
 inherit eutils games subversion flag-o-matic
 
 DESCRIPTION="PS2Emu ISO CDVD EFP plugin"
@@ -10,28 +11,43 @@ HOMEPAGE="http://www.pcsx2.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
-RESTRICT="nomirror"
+RESTRICT="mirror"
 
-DEPEND=">=x11-libs/gtk+-2.6.1"
+DEPEND="
+	x86? (
+		>=x11-libs/gtk+-2.6.1
+	)
+	amd64? (
+		app-emulation/emul-linux-x86-gtklibs
+	)"
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/CDVDisoEFP"
+S="${WORKDIR}/CDVDisoEFP/src/Linux"
 
 pkg_setup() {
 	games_pkg_setup
 	append-ldflags -Wl,--no-as-needed
+
+	if use amd64 && ! has_m32; then
+		eerror "You must be on a multilib profile to use pcsx2!"
+		die "No multilib profile."
+	fi
+	ABI="x86"
+	ABI_ALLOW="x86"
+	append-flags -m32
 }
 
 src_unpack() {
+	local S="${WORKDIR}/CDVDisoEFP"
 	subversion_src_unpack
-	S="${S}/src/Linux"
-	cd "${S}"
+}
 
-	epatch "${FILESDIR}"/${PN}-custom-cflags.patch
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-custom-cflags.patch" || die "epatch failed"
 }
 
 src_install() {
