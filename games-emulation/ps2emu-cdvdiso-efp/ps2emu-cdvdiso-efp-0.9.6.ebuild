@@ -32,13 +32,11 @@ pkg_setup() {
 	games_pkg_setup
 	append-ldflags -Wl,--no-as-needed
 
-	if use amd64 && ! has_m32; then
+	if use amd64 && ! has_multilib_profile; then
 		eerror "You must be on a multilib profile to use pcsx2!"
 		die "No multilib profile."
 	fi
-	ABI="x86"
-	ABI_ALLOW="x86"
-	append-flags -m32
+	use amd64 && multilib_toolchain_setup x86
 }
 
 src_unpack() {
