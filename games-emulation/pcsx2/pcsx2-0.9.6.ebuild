@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
 SVN_PCSX2_URI="http://${PN}.googlecode.com/svn/tags/0.9.6"
 ESVN_REPO_URI="${SVN_PCSX2_URI}/pcsx2"
 inherit games autotools eutils subversion flag-o-matic
@@ -65,13 +66,14 @@ src_unpack() {
 	subversion_src_unpack
 	subversion_fetch ${SVN_PCSX2_BINDIR} "../bin"
 	cd "${S}"
+}
 
+src_prepare() {
 	epatch "${FILESDIR}/${P}_version-number.patch"
-
 	eautoreconf -v --install || die
 }
 
-src_compile() {
+src_configure() {
 	local myconf="--enable-customcflags --enable-local-inis"
 
 	if ! use x86 && ! use amd64; then
@@ -90,8 +92,6 @@ src_compile() {
 		$(use_enable sse4) \
 		${myconf} \
 		|| die
-
-	emake || die
 }
 
 src_install() {
