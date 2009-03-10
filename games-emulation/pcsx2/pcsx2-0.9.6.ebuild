@@ -58,12 +58,15 @@ pkg_setup() {
 	fi
 	ABI="x86"
 	ABI_ALLOW="x86"
+	append-flags -m32
 }
 
 src_unpack() {
 	subversion_src_unpack
 	subversion_fetch ${SVN_PCSX2_BINDIR} "../bin"
 	cd "${S}"
+
+	epatch "${FILESDIR}/${P}_version-number.patch"
 
 	eautoreconf -v --install || die
 }
