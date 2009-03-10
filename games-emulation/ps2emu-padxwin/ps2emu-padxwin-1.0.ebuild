@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils games
+inherit eutils games multilib flag-o-matic
 
 PCSX2="pcsx2-0.9.4"
 
@@ -22,6 +22,18 @@ RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
 S="${WORKDIR}/${PCSX2}/plugins/pad/PADwin/Src"
+
+pkg_setup() {
+	games_pkg_setup
+
+	if use amd64 && ! has_m32; then
+		eerror "You must be on a multilib profile to use pcsx2!"
+		die "No multilib profile."
+	fi
+	ABI="x86"
+	ABI_ALLOW="x86"
+	append-flags -m32
+}
 
 src_unpack() {
 	unpack ${A}
