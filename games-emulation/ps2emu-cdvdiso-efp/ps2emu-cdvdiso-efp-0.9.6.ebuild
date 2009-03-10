@@ -4,7 +4,7 @@
 
 EAPI=2
 ESVN_REPO_URI="http://pcsx2.googlecode.com/svn/tags/0.9.6/plugins/CDVDisoEFP"
-inherit eutils games subversion flag-o-matic
+inherit eutils games subversion flag-o-matic multilib
 
 DESCRIPTION="PS2Emu ISO CDVD EFP plugin"
 HOMEPAGE="http://www.pcsx2.net/"
