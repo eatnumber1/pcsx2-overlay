@@ -1,5 +1,6 @@
---- Makefile.bak	2008-08-10 04:15:54.000000000 -0400
-+++ Makefile	2008-08-10 04:16:47.000000000 -0400
+diff -ur a/src/Linux/Makefile b/src/Linux/Makefile
+--- a/src/Linux/Makefile	2009-03-09 20:27:51.151324540 -0400
++++ b/src/Linux/Makefile	2009-03-09 20:28:19.446278009 -0400
 @@ -1,10 +1,7 @@
 -
 -CC = gcc
@@ -8,7 +9,7 @@
  CFG = cfgCDVDiso
  MKISO = mkiso
 -CFLAGS = -fPIC -Wall -g  -I.. -I. -D__LINUX__
-+CFLAGS += -fPIC -Wall -I.. -I. -D__LINUX__
++CFLAGS += -fPIC -Wall -g  -I.. -I. -D__LINUX__
  OBJS = ../CDVDisop.o Config.o Linux.o ../libiso.o
  CFGOBJS = conf.o interface.o support.o ${OBJS}
  LIBS = -lz -lbz2 -lstdc++
