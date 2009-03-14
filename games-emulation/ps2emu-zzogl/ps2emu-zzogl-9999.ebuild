@@ -31,7 +31,7 @@ DEPEND="
 	)
 	amd64? (
 		app-emulation/emul-linux-x86-xlibs[opengl]
-		app-emulation/emul-linux-x86-baselibs
+		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
 		media-libs/glew[multilib]
 		media-gfx/nvidia-cg-toolkit[multilib]

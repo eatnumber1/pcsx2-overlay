@@ -20,8 +20,8 @@ DEPEND="
 	app-arch/p7zip
 	x86? (
 		x11-libs/libX11
-		media-gfx/nvidia-cg-toolkit
 		media-libs/glew
+		media-gfx/nvidia-cg-toolkit
 		virtual/opengl
 		media-libs/jpeg
 		sys-libs/zlib
@@ -32,12 +32,12 @@ DEPEND="
 	)
 	amd64? (
 		app-emulation/emul-linux-x86-xlibs[opengl]
-		app-emulation/emul-linux-x86-baselibs
+		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
 		media-libs/glew[multilib]
 		media-gfx/nvidia-cg-toolkit[multilib]
-	)
-	"
+	)"
+
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
@@ -48,6 +48,14 @@ S="${WORKDIR}/rc_${PCSX2_VER}/plugins/zerogs/opengl"
 pkg_setup() {
 	games_pkg_setup
 
+	if has_version ">=media-gfx/nvidia-cg-toolkit-2.1.0016"; then
+		if use amd64 && has_multilib_profile; then
+			append-ldflags -L/opt/nvidia-cg-toolkit/lib32
+		else
+			append-ldflags -L/opt/nvidia-cg-toolkit/lib
+		fi
+		append-flags -I/opt/nvidia-cg-toolkit/include
+	fi
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
 	fi
