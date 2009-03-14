@@ -9,24 +9,21 @@ MY_DATE="October2008"
 DESCRIPTION="nvidia's c graphics compiler toolkit"
 HOMEPAGE="http://developer.nvidia.com/object/cg_toolkit.html"
 X86_URI="http://developer.download.nvidia.com/cg/Cg_2.0/${PV}/Cg-${MY_PV}_${MY_DATE}_x86.tgz"
-SRC_URI="x86? (
-	${X86_URI} )
-	amd64? (
-	http://developer.download.nvidia.com/cg/Cg_2.0/${PV}/Cg-${MY_PV}_${MY_DATE}_x86_64.tgz
-	multilib? ( ${X86_URI} ) )"
+SRC_URI="x86? ( ${X86_URI} )
+	amd64? ( http://developer.download.nvidia.com/cg/Cg_2.0/${PV}/Cg-${MY_PV}_${MY_DATE}_x86_64.tgz )"
 
 LICENSE="NVIDIA"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="multilib"
+IUSE=""
 RESTRICT="strip"
 
-if has_multilib_profile && use amd64; then
-	DEPEND="app-emulation/emul-linux-x86-xlibs"
-else
-	DEPEND="virtual/glut"
+DEPEND="virtual/glut"
+if has_multilib_profile; then
+	DEPEND="${DEPEND} amd64? ( app-emulation/emul-linux-x86-xlibs )"
+	SRC_URI="${SRC_URI} amd64? ( ${X86_URI} )"
 fi
-RDEPEND="virtual/glut"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
@@ -38,10 +35,7 @@ src_install() {
 	elif use amd64; then
 		dolib usr/lib64/*
 		if has_multilib_profile; then
-			local abi_save="${ABI}"
-			ABI="x86"
-			dolib usr/lib/* || die
-			ABI="${abi_save}"
+			ABI="x86" dolib usr/lib/*
 		fi
 	fi
 
