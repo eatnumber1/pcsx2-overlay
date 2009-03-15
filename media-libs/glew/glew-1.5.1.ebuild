@@ -1,6 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/glew/glew-1.5.1.ebuild,v 1.1 2008/12/02 21:10:37 ssuominen Exp $
 
 inherit eutils multilib toolchain-funcs
 
@@ -10,20 +10,19 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tgz"
 
 LICENSE="BSD GLX SGI-B GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ia64 ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND="virtual/opengl
+DEPEND="virtual/opengl
 	virtual/glu"
-DEPEND="${RDEPEND}
-	sys-apps/sed"
 
 S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	sed -i -e 's:-s\b::g' Makefile
+	edos2unix config/config.guess
+	sed -i -e 's:-s\b::g' Makefile || die "sed failed."
 }
 
 src_compile(){
