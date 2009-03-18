@@ -8,9 +8,9 @@ diff -ur opengl.bak/configure.ac opengl/configure.ac
 -CFLAGS=" -I/opt/cg/include -L/opt/cg/lib -Wall -Wno-format -Wno-unused "
 -CPPFLAGS=" -I/opt/cg/include -L/opt/cg/lib -Wall -Wno-format -Wno-unused "
 -CXXFLAGS=" -I/opt/cg/include -L/opt/cg/lib -Wall -Wno-format -Wno-unused "
-+CFLAGS=" -Wall -Wno-format -Wno-unused "
-+CPPFLAGS=" -Wall -Wno-format -Wno-unused "
-+CXXFLAGS=" -Wall -Wno-format -Wno-unused "
++CFLAGS+=" -Wall -Wno-format -Wno-unused "
++CPPFLAGS+=" -Wall -Wno-format -Wno-unused "
++CXXFLAGS+=" -Wall -Wno-format -Wno-unused "
  
  dnl Check for debug build
  AC_MSG_CHECKING(debug build)

@@ -18,7 +18,7 @@ IUSE="debug sse2 shaders"
 
 DEPEND="
 	app-arch/p7zip
-	>=media-gfx/nvidia-cg-toolkit-2.1.0016
+	<media-gfx/nvidia-cg-toolkit-2.1.0016
 	x86? (
 		x11-libs/libX11
 		media-libs/glew
@@ -47,12 +47,6 @@ S="${WORKDIR}/rc_${PCSX2_VER}/plugins/zerogs/opengl"
 pkg_setup() {
 	games_pkg_setup
 
-	if use amd64 && has_multilib_profile; then
-		append-ldflags -L/opt/nvidia-cg-toolkit/lib32
-	else
-		append-ldflags -L/opt/nvidia-cg-toolkit/lib
-	fi
-	append-flags -I/opt/nvidia-cg-toolkit/include
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
 	fi

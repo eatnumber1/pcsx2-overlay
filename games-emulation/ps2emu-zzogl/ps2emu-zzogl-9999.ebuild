@@ -16,10 +16,9 @@ RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
 DEPEND="
-	app-arch/p7zip
+	<media-gfx/nvidia-cg-toolkit-2.1.0016
 	x86? (
 		x11-libs/libX11
-		media-gfx/nvidia-cg-toolkit
 		media-libs/glew
 		virtual/opengl
 		media-libs/jpeg
@@ -33,8 +32,7 @@ DEPEND="
 		app-emulation/emul-linux-x86-xlibs[opengl]
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
-		media-libs/glew[multilib]
-		media-gfx/nvidia-cg-toolkit[multilib]
+		media-libs/glew
 	)
 	"
 
@@ -46,6 +44,8 @@ S="${WORKDIR}/opengl"
 pkg_setup() {
 	games_pkg_setup
 
+	# Fix for compile error.
+	append-flags "-I${S}/common"
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
 	fi
