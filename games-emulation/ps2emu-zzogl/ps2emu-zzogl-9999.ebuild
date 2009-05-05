@@ -37,6 +37,7 @@ DEPEND="
 	"
 
 RDEPEND="${DEPEND}
+	!games-emulation/ps2emu-zerogs
 	games-emulation/pcsx2"
 
 S="${WORKDIR}/opengl"
@@ -46,9 +47,7 @@ pkg_setup() {
 
 	# Fix for compile error.
 	append-flags "-I${S}/common"
-	#if ! use debug && use shaders; then
-		append-ldflags -Wl,--no-as-needed
-	#fi
+	append-ldflags -Wl,--no-as-needed
 
 	if use shaders; then
 		ewarn "If compilation fails, try recompiling with USE=\"-shaders\""
@@ -70,6 +69,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-gcc43.patch"
 	epatch "${FILESDIR}/${PN}-consistent-naming.patch"
 	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
+	epatch "${FILESDIR}/${PN}-ambiguous-abs.patch"
 
 	eautoreconf -v --install || die
 	chmod +x configure
@@ -97,7 +97,7 @@ src_compile() {
 src_install() {
 	exeinto "$(games_get_libdir)/ps2emu/plugins"
 	insinto "$(games_get_libdir)/ps2emu/plugins"
-	newexe libZeroGSogl.so.* libZeroGSogl.so || die
+	newexe libZeroGSogl.so.* libZZogl.so || die
 	if use debug; then
 		doins ps2hw.fx || die
 		doins ctx1/ps2hw_ctx.fx || die

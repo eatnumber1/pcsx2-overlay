@@ -1,0 +1,11 @@
+--- a/opengl/ZZoglFlush.cpp	2009-05-05 07:12:00.839813268 -0400
++++ b/opengl/ZZoglFlush.cpp	2009-05-05 14:40:46.281788860 -0400
+@@ -1766,7 +1766,7 @@
+ // Fixme should be in Vector lib
+ inline bool 
+ equal_vectors( Vector a, Vector b){
+-	if ( abs(a.x - b.x) + abs(a.y - b.y) + abs(a.z - b.z) + abs(a.w - b.w) < 0.01 ) 
++	if ( abs((long int)(a.x - b.x)) + abs((long int)(a.y - b.y)) + abs((long int)(a.z - b.z)) + abs((long int)(a.w - b.w)) < 0.01 ) 
+ 		return true;
+ 	else
+ 		return false;

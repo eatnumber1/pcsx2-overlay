@@ -39,6 +39,7 @@ DEPEND="
 
 
 RDEPEND="${DEPEND}
+	!games-emulation/ps2emu-zzogl
 	games-emulation/pcsx2"
 
 #S="${WORKDIR}/opengl"
