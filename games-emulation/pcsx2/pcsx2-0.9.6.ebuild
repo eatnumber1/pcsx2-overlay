@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI="2"
 inherit games autotools eutils multilib
 
 DESCRIPTION="PlayStation2 emulator"
@@ -26,8 +26,7 @@ DEPEND="
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
 	)
-	nls? ( virtual/libintl )
-	!games-emulation/pcsx2-playground"
+	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}"
 
 LANGS="ar bg cz de du el es fr hb it ja pe pl po po_BR ro ru sh sw tc tr"
@@ -83,6 +82,10 @@ src_configure() {
 		$(use_enable sse4) \
 		${myconf} \
 		|| die
+}
+
+src_compile() {
+	emake
 }
 
 src_install() {

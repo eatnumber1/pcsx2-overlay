@@ -33,7 +33,7 @@ DEPEND="
 	)"
 
 RDEPEND="${DEPEND}
-	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/rc_${PCSX2_VER}/plugins/PeopsSPU2"
 

@@ -37,7 +37,7 @@ DEPEND="
 	"
 
 RDEPEND="${DEPEND}
-	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
+	games-emulation/pcsx2"
 
 S="${WORKDIR}/opengl"
 
@@ -46,9 +46,9 @@ pkg_setup() {
 
 	# Fix for compile error.
 	append-flags "-I${S}/common"
-	if ! use debug && use shaders; then
+	#if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
-	fi
+	#fi
 
 	if use shaders; then
 		ewarn "If compilation fails, try recompiling with USE=\"-shaders\""
