@@ -5,7 +5,7 @@
 EAPI=2
 inherit eutils games flag-o-matic multilib
 
-DESCRIPTION="PS2Emu CDVD plugin"
+DESCRIPTION="PSEmu2 CD/DVD plugin"
 HOMEPAGE="http://www.pcsx2.net/"
 PCSX2_VER="0.9.6"
 SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
