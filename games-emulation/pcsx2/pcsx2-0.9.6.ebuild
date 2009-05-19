@@ -26,6 +26,7 @@ DEPEND="
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
 	)
+	>=sys-devel/gcc-4.3
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}"
 
