@@ -61,7 +61,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}/${P}_version-number.patch"
 	epatch "${FILESDIR}/${P}_gcc-4.3.3.patch"
-	eautoreconf -v --install || die
+	eautoreconf --install || die
 }
 
 src_configure() {
