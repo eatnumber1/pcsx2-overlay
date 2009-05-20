@@ -92,8 +92,6 @@ src_compile() {
 src_install() {
 	local x
 
-	find ../bin -name "\.svn" -type d -exec rm -r {} +
-
 	keepdir "$(games_get_libdir)/ps2emu/plugins"
 	if use doc; then
 		dodoc Docs/*.txt || die
@@ -107,6 +105,7 @@ src_install() {
 		"${FILESDIR}/${PN}" > "${D}${GAMES_BINDIR}/${PN}" || die
 
 	cd ../bin
+	find . -name "\.svn" -type d -exec rm -r {} +
 	insinto "${GAMES_DATADIR}/${PN}"
 	doins -r .pixmaps patches || die
 
