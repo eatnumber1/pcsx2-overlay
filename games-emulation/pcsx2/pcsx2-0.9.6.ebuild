@@ -86,7 +86,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	emake || die
 }
 
 src_install() {
