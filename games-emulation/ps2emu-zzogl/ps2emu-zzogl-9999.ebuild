@@ -16,7 +16,7 @@ RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
 DEPEND="
-	<media-gfx/nvidia-cg-toolkit-2.1.0016
+	>=media-gfx/nvidia-cg-toolkit-2.1.0016
 	x86? (
 		x11-libs/libX11
 		media-libs/glew
@@ -29,6 +29,7 @@ DEPEND="
 		>=x11-libs/gtk+-2
 	)
 	amd64? (
+		>=media-gfx/nvidia-cg-toolkit-2.1.0016[multilib]
 		app-emulation/emul-linux-x86-xlibs[opengl]
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
@@ -68,7 +69,7 @@ src_unpack() {
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-gcc43.patch"
 	epatch "${FILESDIR}/${PN}-consistent-naming.patch"
-	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
+	epatch "${FILESDIR}/${PN}-gentoo.patch"
 	epatch "${FILESDIR}/${PN}-ambiguous-abs.patch"
 
 	eautoreconf -v --install || die
