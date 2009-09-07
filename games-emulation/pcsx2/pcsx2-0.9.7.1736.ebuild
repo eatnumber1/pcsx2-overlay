@@ -32,7 +32,14 @@ DEPEND="
 		app-emulation/emul-linux-x86-gtklibs
 	)
 	nls? ( virtual/libintl )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	games-emulation/ps2emu-cdvdnull
+	games-emulation/ps2emu-dev9null
+	games-emulation/ps2emu-fwnull
+	games-emulation/ps2emu-gsnull
+	games-emulation/ps2emu-padnull
+	games-emulation/ps2emu-spu2null
+	games-emulation/ps2emu-usbnull"
 
 LANGS="ar bg cz de du el es fr hb it ja pe pl po po_BR ro ru sh sw tc tr"
 
