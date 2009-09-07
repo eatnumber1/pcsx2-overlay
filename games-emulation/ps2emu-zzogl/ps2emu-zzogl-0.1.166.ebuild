@@ -3,7 +3,8 @@
 # $Header: $
 
 EAPI=2
-ESVN_REPO_URI="http://sanechka.spb.ru/svnroot/ruslan/zerogs/"
+MY_PV="166"
+ESVN_REPO_URI="http://sanechka.spb.ru/svnroot/ruslan/zerogs/@${MY_PV}"
 inherit eutils games flag-o-matic multilib autotools subversion
 
 DESCRIPTION="PS2Emu ZeroGS OpenGL plugin"
@@ -11,7 +12,7 @@ HOMEPAGE="http://www.pcsx2.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
@@ -67,10 +68,11 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-gcc43.patch"
-	epatch "${FILESDIR}/${PN}-consistent-naming.patch"
-	epatch "${FILESDIR}/${PN}-gentoo.patch"
-	epatch "${FILESDIR}/${PN}-ambiguous-abs.patch"
+	epatch "${FILESDIR}/${PN}_gcc43.patch"
+	epatch "${FILESDIR}/${PN}_consistent-naming.patch"
+	epatch "${FILESDIR}/${PN}_gentoo.patch"
+	epatch "${FILESDIR}/${PN}_ambiguous-abs.patch"
+	epatch "${FILESDIR}/${PN}_include-paths.patch"
 
 	eautoreconf -v --install || die
 	chmod +x configure

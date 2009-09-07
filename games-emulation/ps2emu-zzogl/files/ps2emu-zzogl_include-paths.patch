@@ -1,0 +1,11 @@
+Index: opengl/Linux/Makefile.am
+===================================================================
+--- opengl/Linux/Makefile.am	(revision 166)
++++ opengl/Linux/Makefile.am	(working copy)
+@@ -6,5 +6,5 @@
+ libZeroGSLinux_a_CFLAGS = -fPIC
+ endif
+ 
+-INCLUDES = $(shell pkg-config --cflags gtk+-2.0) -I@srcdir@/../ -I@srcdir@/../../../../common/include
++INCLUDES = $(shell pkg-config --cflags gtk+-2.0) -I@srcdir@/../ -I@srcdir@/../common
+ libZeroGSLinux_a_SOURCES = callbacks.c Conf.cpp interface.c Linux.cpp support.c
