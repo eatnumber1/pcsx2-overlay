@@ -1,0 +1,39 @@
+Index: pcsx2/Linux/LnxMain.cpp
+===================================================================
+--- pcsx2/Linux/LnxMain.cpp	(revision 1736)
++++ pcsx2/Linux/LnxMain.cpp	(working copy)
+@@ -47,12 +47,13 @@
+ 	Config.Paths.Inis = Config.Paths.Working + "/" + string(DEFAULT_INIS_DIR) + "/";
+ 	sprintf(cfgfile, "%s/pcsx2.cfg", Config.Paths.Inis.c_str());
+ #else
+-	Path::CreateDirectory("~/.pcsx2");
+-	Path::ChangeDirectory("~/.pcsx2");
++	string basedir = string(getenv("HOME")) + "/.pcsx2";
++	Path::CreateDirectory(basedir);
++	Path::ChangeDirectory(basedir);
+ 	Path::CreateDirectory(DEFAULT_INIS_DIR);
+-	Config.Paths.Inis = "~/.pcsx2/" + string(DEFAULT_INIS_DIR) + "/";
++	Config.Paths.Working = basedir;
++	Config.Paths.Inis = basedir + "/" + string(DEFAULT_INIS_DIR) + "/";
+ 	sprintf(cfgfile, "%s/pcsx2.cfg", Config.Paths.Inis.c_str());
+-	Path::ChangeDirectory(Config.Paths.Working);
+ #endif
+ 
+ #ifdef PCSX2_DEVBUILD
+@@ -76,11 +77,12 @@
+ 	if (LoadConfig() == -1)
+ 	{
+ 
++		string workingdir = Config.Paths.Working;
+ 		memset(&Config, 0, sizeof(Config));
+-		sprintf(Config.Paths.Bios, "%s/%s/", Config.Paths.Working.c_str(), DEFAULT_BIOS_DIR);
+-		sprintf(Config.Paths.Plugins, "%s/%s/", Config.Paths.Working.c_str(), DEFAULT_PLUGINS_DIR);
+-		sprintf(Config.Mcd[0].Filename, "%s/%s/%s", Config.Paths.Working.c_str(), MEMCARDS_DIR, DEFAULT_MEMCARD1);
+-		sprintf(Config.Mcd[1].Filename, "%s/%s/%s", Config.Paths.Working.c_str(), MEMCARDS_DIR, DEFAULT_MEMCARD2);
++		sprintf(Config.Paths.Bios, "%s/%s/", workingdir.c_str(), DEFAULT_BIOS_DIR);
++		sprintf(Config.Paths.Plugins, "%s/%s/", workingdir.c_str(), DEFAULT_PLUGINS_DIR);
++		sprintf(Config.Mcd[0].Filename, "%s/%s/%s", workingdir.c_str(), MEMCARDS_DIR, DEFAULT_MEMCARD1);
++		sprintf(Config.Mcd[1].Filename, "%s/%s/%s", workingdir.c_str(), MEMCARDS_DIR, DEFAULT_MEMCARD2);
+ 		Config.Mcd[0].Enabled = 1;
+ 		Config.Mcd[1].Enabled = 1;
+ 		Config.McdEnableEject = 1;
