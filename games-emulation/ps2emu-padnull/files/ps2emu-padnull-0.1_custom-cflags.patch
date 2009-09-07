@@ -1,0 +1,48 @@
+Index: PadNull/configure.ac
+===================================================================
+--- PadNull/configure.ac	(revision 1736)
++++ PadNull/configure.ac	(working copy)
+@@ -18,10 +18,10 @@
+ AC_SUBST(Padnull_RELEASE,[$Padnull_CURRENT].[$Padnull_REVISION].[$Padnull_AGE])
+ AC_SUBST(Padnull_SONAME,libPadnull.so.[$Padnull_CURRENT].[$Padnull_REVISION].[$Padnull_AGE])
+ 
+-CFLAGS=
+-CPPFLAGS=
+-CXXFLAGS=
+-CCASFLAGS=
++CFLAGS+=" "
++CPPFLAGS+=" "
++CXXFLAGS+=" "
++CCASFLAGS+=" "
+ 
+ dnl Check for debug build
+ AC_MSG_CHECKING(debug build)
+@@ -30,15 +30,15 @@
+ if test "x$debug" == xyes
+ then
+  AC_DEFINE(PCSX2_DEBUG,1,[PCSX2_DEBUG])
+- CFLAGS+="-g -fPIC -Wall  -Wno-unused-value -m32 "
+- CPPFLAGS+="-g -fPIC -Wall  -Wno-unused-value -m32 "
+- CXXFLAGS+="-g -fPIC -Wall  -Wno-unused-value -m32 "
++ CFLAGS+="-fPIC -Wall  -Wno-unused-value -m32 "
++ CPPFLAGS+="-fPIC -Wall  -Wno-unused-value -m32 "
++ CXXFLAGS+="-fPIC -Wall  -Wno-unused-value -m32 "
+  CCASFLAGS+=" -m32 "
+ else
+  AC_DEFINE(NDEBUG,1,[NDEBUG])
+- CFLAGS+="-O3 -fomit-frame-pointer -fPIC -Wall  -Wno-unused-value -m32 "
+- CPPFLAGS+="-O3 -fomit-frame-pointer -fPIC -Wall  -Wno-unused-value -m32 "
+- CXXFLAGS+="-O3 -fomit-frame-pointer -fPIC -Wall  -Wno-unused-value -m32 "
++ CFLAGS+="-fPIC -Wall  -Wno-unused-value -m32 "
++ CPPFLAGS+="-fPIC -Wall  -Wno-unused-value -m32 "
++ CXXFLAGS+="-fPIC -Wall  -Wno-unused-value -m32 "
+  CCASFLAGS+=" -m32 "
+ fi
+ AM_CONDITIONAL(DEBUGBUILD, test x$debug = xyes)
+@@ -80,4 +80,4 @@
+ 
+ echo "Configuration:"
+ echo "  Debug build?	       $debug"
+-echo "  Dev build?	       $devbuild"
+\ No newline at end of file
++echo "  Dev build?	       $devbuild"
