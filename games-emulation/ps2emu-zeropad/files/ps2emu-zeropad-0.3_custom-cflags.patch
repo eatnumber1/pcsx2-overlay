@@ -1,0 +1,35 @@
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 1736)
++++ configure.ac	(working copy)
+@@ -18,9 +18,9 @@
+ AC_SUBST(ZEROPAD_RELEASE, [$ZEROPAD_CURRENT].[$ZEROPAD_REVISION].[$ZEROPAD_AGE])
+ AC_SUBST(ZEROPAD_SONAME, libZeroPAD.so.[$ZEROPAD_CURRENT].[$ZEROPAD_REVISION].[$ZEROPAD_AGE])
+ 
+-CFLAGS=
+-CXXFLAGS=
+-CCASFLAGS=
++CFLAGS+=" "
++CXXFLAGS+=" "
++CCASFLAGS+=" "
+ 
+ dnl Check for debug build
+ AC_MSG_CHECKING(debug build)
+@@ -29,13 +29,13 @@
+ if test "x$debug" == xyes
+ then
+  AC_DEFINE(PCSX2_DEBUG,1,[PCSX2_DEBUG])
+- CFLAGS+="-g -m32 -fpic "
+- CXXFLAGS+="-g -m32 -fpic "
++ CFLAGS+="-m32 -fpic "
++ CXXFLAGS+="-m32 -fpic "
+  CCASFLAGS+=" -m32 -fpic "
+ else
+  AC_DEFINE(NDEBUG,1,[NDEBUG])
+- CFLAGS+="-O2 -fomit-frame-pointer -m32 -fpic "
+- CXXFLAGS+="-O2 -fomit-frame-pointer -m32 -fpic "
++ CFLAGS+="-m32 -fpic "
++ CXXFLAGS+="-m32 -fpic "
+  CCASFLAGS+=" -m32 -fpic "
+ fi
+ AM_CONDITIONAL(DEBUGBUILD, test x$debug = xyes)

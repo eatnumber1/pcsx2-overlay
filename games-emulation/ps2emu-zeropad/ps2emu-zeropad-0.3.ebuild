@@ -3,17 +3,21 @@
 # $Header: $
 
 EAPI=2
-inherit eutils games autotools multilib
+MY_PV="1736"
+MY_PN="zeropad"
+SVN_PCSX2_URI="http://pcsx2.googlecode.com/svn/trunk"
+ESVN_REPO_URI="${SVN_PCSX2_URI}/plugins/${MY_PN}@${MY_PV}"
+inherit eutils games autotools multilib subversion
 
 DESCRIPTION="PS2Emu pad plugin"
 HOMEPAGE="http://www.pcsx2.net/"
-PCSX2_VER="0.9.6"
-SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
+SRC_URI=""
+SVN_PCSX2_COMMONDIR="${SVN_PCSX2_URI}/common@${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="debug joystick"
+IUSE="debug"
 RESTRICT="primaryuri"
 
 DEPEND="
@@ -21,18 +25,18 @@ DEPEND="
 	x86? (
 		>=x11-libs/gtk+-2
 		x11-proto/xproto
-		joystick? ( media-libs/libsdl[joystick] )
+		media-libs/libsdl[joystick]
 	)
 	amd64? (
 	    app-emulation/emul-linux-x86-xlibs
 		app-emulation/emul-linux-x86-gtklibs
-		joystick? ( app-emulation/emul-linux-x86-sdl )
+		app-emulation/emul-linux-x86-sdl
 	)"
 
 RDEPEND="${DEPEND}
 	|| ( games-emulation/pcsx2 games-emulation/pcsx2-playground )"
 
-S="${WORKDIR}/rc_${PCSX2_VER}/plugins/zeropad"
+S="${WORKDIR}/plugins/${MY_PN}"
 
 pkg_setup() {
 	if use amd64 && ! has_multilib_profile; then
@@ -42,10 +46,15 @@ pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
 }
 
+src_unpack() {
+	subversion_src_unpack
+	local S="${WORKDIR}"
+	subversion_fetch "${SVN_PCSX2_COMMONDIR}" "common"
+}
+
 src_prepare() {
 	epatch "${FILESDIR}/${P}_consistent-naming.patch"
 	epatch "${FILESDIR}/${P}_custom-cflags.patch"
-	epatch "${FILESDIR}/${P}_add-joystick.patch"
 
 	eautoreconf -v --install || die
 }
@@ -53,7 +62,6 @@ src_prepare() {
 src_configure() {
 	egamesconf \
 		$(use_enable debug) \
-		$(use_enable joystick) \
 		|| die
 }
 

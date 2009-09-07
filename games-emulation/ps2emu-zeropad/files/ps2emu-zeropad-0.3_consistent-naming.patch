@@ -1,0 +1,14 @@
+diff -ur zeropad.bak/Makefile.am zeropad/Makefile.am
+--- zeropad.bak/Makefile.am	2009-03-10 11:33:23.120107815 -0400
++++ zeropad/Makefile.am	2009-03-10 11:33:34.050021995 -0400
+@@ -14,10 +14,6 @@
+ # Create a shared object by faking an exe (thanks to ODE makefiles)
+ traplibdir=$(prefix)
+ 
+-if DEBUGBUILD
+-preext=d
+-endif
+-
+ EXEEXT=$(preext)@so_ext@
+ 
+ traplib_PROGRAMS=libZeroPAD
