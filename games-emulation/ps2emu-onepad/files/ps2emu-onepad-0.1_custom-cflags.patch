@@ -1,0 +1,42 @@
+Index: onepad/configure.ac
+===================================================================
+--- onepad/configure.ac	(revision 1736)
++++ onepad/configure.ac	(working copy)
+@@ -18,9 +18,9 @@
+ AC_SUBST(ONEPAD_RELEASE, [$ONEPAD_CURRENT].[$ONEPAD_REVISION].[$ONEPAD_AGE])
+ AC_SUBST(ONEPAD_SONAME, libOnePAD.so.[$ONEPAD_CURRENT].[$ONEPAD_REVISION].[$ONEPAD_AGE])
+ 
+-CFLAGS=
+-CXXFLAGS=
+-CCASFLAGS=
++CFLAGS+=" "
++CXXFLAGS+=" "
++CCASFLAGS+=" "
+ 
+ dnl Check for debug build
+ AC_MSG_CHECKING(debug build)
+@@ -29,13 +29,13 @@
+ if test "x$debug" == xyes
+ then
+  AC_DEFINE(PCSX2_DEBUG,1,[PCSX2_DEBUG])
+- CFLAGS+="-g -m32 -fpic "
+- CXXFLAGS+="-g -m32 -fpic "
++ CFLAGS+="-m32 -fpic "
++ CXXFLAGS+="-m32 -fpic "
+  CCASFLAGS+=" -m32 -fpic "
+ else
+  AC_DEFINE(NDEBUG,1,[NDEBUG])
+- CFLAGS+="-O2 -fomit-frame-pointer -m32 -fpic "
+- CXXFLAGS+="-O2 -fomit-frame-pointer -m32 -fpic "
++ CFLAGS+="-m32 -fpic "
++ CXXFLAGS+="-m32 -fpic "
+  CCASFLAGS+=" -m32 -fpic "
+ fi
+ AM_CONDITIONAL(DEBUGBUILD, test x$debug = xyes)
+@@ -70,4 +70,4 @@
+  ])
+ 
+ echo "Configuration:"
+-echo "  Debug build?	       $debug"
+\ No newline at end of file
++echo "  Debug build?	       $debug"
