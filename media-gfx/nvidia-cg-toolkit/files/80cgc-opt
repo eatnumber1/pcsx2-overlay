@@ -2,5 +2,6 @@
 CG_COMPILER_EXE=/opt/bin/cgc
 
 # Make sure the helper files are found
-LDPATH="/opt/nvidia-cg-toolkit/lib"
+LDPATH="/opt/nvidia-cg-toolkit/lib
+/opt/nvidia-cg-toolkit/lib32"
 MANPATH="/opt/nvidia-cg-toolkit/man"
