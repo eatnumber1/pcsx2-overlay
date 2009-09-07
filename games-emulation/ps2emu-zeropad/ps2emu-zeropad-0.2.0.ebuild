@@ -8,7 +8,8 @@ inherit eutils games autotools multilib
 DESCRIPTION="PS2Emu pad plugin"
 HOMEPAGE="http://www.pcsx2.net/"
 PCSX2_VER="0.9.6"
-SRC_URI="http://www.pcsx2.net/files/12310 -> Pcsx2_${PCSX2_VER}_source.7z"
+MY_PV="18427"
+SRC_URI="http://www.pcsx2.net/files/${MY_PV} -> Pcsx2_${PCSX2_VER}_source.7z"
 
 LICENSE="GPL-2"
 SLOT="0"
