@@ -17,7 +17,6 @@ RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
 DEPEND="
-	>=media-gfx/nvidia-cg-toolkit-2.1.0016
 	x86? (
 		x11-libs/libX11
 		media-libs/glew
@@ -35,6 +34,9 @@ DEPEND="
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
 		media-libs/glew
+	)
+	!amd64? (
+		>=media-gfx/nvidia-cg-toolkit-2.1.0016
 	)
 	"
 
