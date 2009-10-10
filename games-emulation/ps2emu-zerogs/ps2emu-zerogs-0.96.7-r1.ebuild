@@ -34,7 +34,7 @@ DEPEND="
 		>=app-emulation/emul-linux-x86-baselibs-20081109
 		app-emulation/emul-linux-x86-gtklibs
 		media-libs/glew
-		>=media-gfx/nvidia-cg-toolkit-2.1.0016[multilib]
+		>=media-gfx/nvidia-cg-toolkit-2.1.0017[multilib]
 	)
 	!amd64? (
 		>=media-gfx/nvidia-cg-toolkit-2.1.0016
