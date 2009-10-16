@@ -1,0 +1,22 @@
+x11-proto/xproto x86? ( sys-libs/zlib >=x11-libs/gtk+-2 ) amd64? ( >=app-emulation/emul-linux-x86-baselibs-20081109 app-emulation/emul-linux-x86-gtklibs ) nls? ( virtual/libintl ) =sys-devel/automake-1.10* >=sys-devel/autoconf-2.61 sys-devel/libtool dev-util/subversion net-misc/rsync
+x11-proto/xproto x86? ( sys-libs/zlib >=x11-libs/gtk+-2 ) amd64? ( >=app-emulation/emul-linux-x86-baselibs-20081109 app-emulation/emul-linux-x86-gtklibs ) nls? ( virtual/libintl ) games-emulation/ps2emu-cdvdnull games-emulation/ps2emu-dev9null games-emulation/ps2emu-fwnull games-emulation/ps2emu-gsnull games-emulation/ps2emu-padnull games-emulation/ps2emu-spu2null games-emulation/ps2emu-usbnull
+0
+
+primaryuri
+http://www.pcsx2.net/
+GPL-2
+PlayStation2 emulator
+~amd64 ~x86
+autotools base eutils games libtool multilib portability subversion toolchain-funcs
+debug nls doc linguas_ar linguas_bg linguas_cz linguas_de linguas_du linguas_el linguas_es linguas_fr linguas_hb linguas_it linguas_ja linguas_pe linguas_pl linguas_po linguas_po_BR linguas_ro linguas_ru linguas_sh linguas_sw linguas_tc linguas_tr
+
+
+
+2
+
+compile configure install postinst preinst prepare setup unpack
+
+
+
+
+

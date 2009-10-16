@@ -1,0 +1,22 @@
+
+virtual/glut multilib? ( amd64? ( app-emulation/emul-linux-x86-xlibs ) )
+0
+x86? ( http://developer.download.nvidia.com/cg/Cg_2.1/2.1.0017/Cg-2.1_February2009_x86.tgz ) amd64? ( http://developer.download.nvidia.com/cg/Cg_2.0/2.1.0017/Cg-2.1_February2009_x86_64.tgz multilib? ( http://developer.download.nvidia.com/cg/Cg_2.1/2.1.0017/Cg-2.1_February2009_x86.tgz ) )
+strip
+http://developer.nvidia.com/object/cg_toolkit.html
+NVIDIA
+NVIDIA's C graphics compiler toolkit
+~amd64 ~x86
+versionator
+multilib
+
+
+
+
+
+install postinst unpack
+
+
+
+
+
