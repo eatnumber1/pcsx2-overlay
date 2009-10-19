@@ -1,0 +1,15 @@
+--- a/opengl/configure.ac	2009-10-19 17:24:56.802883931 -0400
++++ b/opengl/configure.ac	2009-10-19 17:23:19.158912824 -0400
+@@ -25,9 +25,9 @@
+ AC_SUBST(ZEROGS_RELEASE)
+ AC_SUBST(ZEROGS_SONAME)
+ 
+-CFLAGS=" -I/opt/cg/include -L/opt/cg/lib "
+-CPPFLAGS=" -I/opt/cg/include -L/opt/cg/lib "
+-CXXFLAGS=" -I/opt/cg/include -L/opt/cg/lib "
++CFLAGS=" -I/opt/nvidia-cg-toolkit/include -L/opt/nvidia-cg-toolkit/lib32 "
++CPPFLAGS=" -I/opt/nvidia-cg-toolkit/include -L/opt/nvidia-cg-toolkit/lib32 "
++CXXFLAGS=" -I/opt/nvidia-cg-toolkit/include -L/opt/nvidia-cg-toolkit/lib32 "
+ 
+ dnl Check for debug build
+ AC_MSG_CHECKING(debug build)

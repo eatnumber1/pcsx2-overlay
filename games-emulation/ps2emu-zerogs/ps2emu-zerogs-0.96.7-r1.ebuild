@@ -67,11 +67,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-gcc43.patch"
-	epatch "${FILESDIR}/${PN}-devbuild-paths.patch"
-	epatch "${FILESDIR}/${PN}-consistent-naming.patch"
-	epatch "${FILESDIR}/${PN}-custom-cflags.patch"
-	epatch "${FILESDIR}/${PN}-compile-shaders.patch"
+	epatch "${FILESDIR}/${PN}_gcc43.patch"
+	epatch "${FILESDIR}/${PN}_devbuild-paths.patch"
+	epatch "${FILESDIR}/${PN}_consistent-naming.patch"
+	epatch "${FILESDIR}/${PN}_custom-cflags.patch"
+	epatch "${FILESDIR}/${PN}_compile-shaders.patch"
+	epatch "${FILESDIR}/${PN}_gentoo.patch"
 
 	eautoreconf -v --install || die
 	chmod +x configure
