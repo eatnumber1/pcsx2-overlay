@@ -7,7 +7,7 @@ MY_PV="166"
 ESVN_REPO_URI="http://sanechka.spb.ru/svnroot/ruslan/zerogs/@${MY_PV}"
 inherit eutils games flag-o-matic multilib autotools subversion
 
-DESCRIPTION="PS2Emu ZeroGS OpenGL plugin"
+DESCRIPTION="PS2Emu ZZogl OpenGL plugin"
 HOMEPAGE="http://www.pcsx2.net/"
 
 LICENSE="GPL-2"

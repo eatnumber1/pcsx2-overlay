@@ -5,7 +5,7 @@ x86? ( x11-libs/libX11 media-libs/glew virtual/opengl media-libs/jpeg sys-libs/z
 primaryuri
 http://www.pcsx2.net/
 GPL-2
-PS2Emu ZeroGS OpenGL plugin
+PS2Emu ZZogl OpenGL plugin
 ~x86 ~amd64
 autotools base eutils flag-o-matic games libtool multilib portability subversion toolchain-funcs
 debug sse2 shaders
