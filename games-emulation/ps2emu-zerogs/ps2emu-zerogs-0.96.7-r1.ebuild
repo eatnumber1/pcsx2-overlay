@@ -87,7 +87,11 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	if ! emake; then
+		eerror "If the failure is about undefined references to __glew*, make"
+		eerror "sure you have the media-libs/glew from the pcsx2 overlay installed."
+		die "emake failed"
+	fi
 
 	if ! use debug && use shaders; then
 		einfo "Compiling shaders..."
