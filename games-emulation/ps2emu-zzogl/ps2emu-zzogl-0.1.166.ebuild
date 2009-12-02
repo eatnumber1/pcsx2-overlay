@@ -51,7 +51,7 @@ pkg_setup() {
 
 	# Fix for compile error.
 	append-flags "-I${S}/common"
-	append-ldflags -Wl,--no-as-needed
+	append-ldflags -Wl,--no-as-needed,--no-undefined
 
 	if use shaders; then
 		ewarn "If compilation fails, try recompiling with USE=\"-shaders\""
