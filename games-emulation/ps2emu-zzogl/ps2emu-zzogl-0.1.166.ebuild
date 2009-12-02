@@ -75,6 +75,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}_gentoo.patch"
 	epatch "${FILESDIR}/${PN}_ambiguous-abs.patch"
 	epatch "${FILESDIR}/${PN}_include-paths.patch"
+	epatch "${FILESDIR}/${PN}_required-libraries.patch"
 
 	eautoreconf -v --install || die
 	chmod +x configure

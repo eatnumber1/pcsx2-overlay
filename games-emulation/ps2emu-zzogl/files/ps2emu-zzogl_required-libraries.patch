@@ -1,0 +1,20 @@
+Index: opengl/configure.ac
+===================================================================
+--- opengl/configure.ac	(revision 166)
++++ opengl/configure.ac	(working copy)
+@@ -102,6 +102,7 @@
+ AC_MSG_CHECKING(gtk2+)
+ AC_CHECK_PROG(GTK_CONFIG, pkg-config, pkg-config)
+ LIBS+=$(pkg-config --libs gtk+-2.0)
++LIBS+=$(pkg-config --libs x11)
+ 
+ dnl bindir = pcsx2exe
+ 
+@@ -132,6 +133,7 @@
+ AC_CHECK_LIB(z,main,[LIBS="$LIBS -lz"])
+ AC_CHECK_LIB(dl,main,[LIBS="$LIBS -ldl"])
+ AC_CHECK_LIB(Xxf86vm,main,[LIBS="$LIBS -lXxf86vm"],[echo "Error! You need to have libXxf86vm-dev." ; exit -1])
++AC_CHECK_LIB(m,floorf,[LIBS="$LIBS -lm"],[echo "Error! You need libm."; exit -1])
+ 
+ dnl AC_CHECK_LIB(Cg,cgCreateContext,[LIBS="$LIBS -lCg"])
+ dnl AC_CHECK_LIB(CgGL,cgGLEnableProfile,[LIBS="$LIBS -lCgGL"])
