@@ -55,6 +55,7 @@ src_install() {
 	fi
 
 	dobin usr/bin/cgc || die
+	dodir /opt/bin || die
 	dosym ${DEST}/bin/cgc /opt/bin/cgc || die
 
 	if use x86; then
