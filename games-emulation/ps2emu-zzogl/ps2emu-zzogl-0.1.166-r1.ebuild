@@ -3,7 +3,9 @@
 # $Header: $
 
 EAPI=2
-MY_PV="166"
+
+inherit versionator
+MY_PV="$(get_version_component_range 3)"
 ESVN_REPO_URI="http://sanechka.spb.ru/svnroot/ruslan/zerogs/@${MY_PV}"
 inherit eutils games flag-o-matic multilib autotools subversion
 
