@@ -53,7 +53,6 @@ pkg_setup() {
 	if ! use debug && use shaders; then
 		append-ldflags -Wl,--no-as-needed
 	fi
-	append-ldflags -Wl,--no-undefined
 
 	if use amd64 && ! has_multilib_profile; then
 		eerror "You must be on a multilib profile to use pcsx2!"

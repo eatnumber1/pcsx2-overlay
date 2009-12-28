@@ -51,7 +51,7 @@ pkg_setup() {
 
 	# Fix for compile error.
 	append-flags "-I${S}/common"
-	append-ldflags -Wl,--no-as-needed,--no-undefined
+	append-ldflags -Wl,--no-as-needed
 
 	if use amd64 && ! has_multilib_profile; then
 		eerror "You must be on a multilib profile to use pcsx2!"
