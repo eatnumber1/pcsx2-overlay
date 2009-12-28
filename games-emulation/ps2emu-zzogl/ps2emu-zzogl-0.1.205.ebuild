@@ -66,12 +66,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}_gcc43.patch"
-	epatch "${FILESDIR}/${PN}_consistent-naming.patch"
-	epatch "${FILESDIR}/${PN}_gentoo.patch"
-	epatch "${FILESDIR}/${PN}_ambiguous-abs.patch"
-	epatch "${FILESDIR}/${PN}_include-paths.patch"
-	epatch "${FILESDIR}/${PN}_required-libraries.patch"
+	local patch_p="${PN}-0.1.166"
+	epatch "${FILESDIR}/${patch_p}_gcc43.patch"
+	epatch "${FILESDIR}/${patch_p}_consistent-naming.patch"
+	epatch "${FILESDIR}/${patch_p}_gentoo.patch"
+	epatch "${FILESDIR}/${patch_p}_ambiguous-abs.patch"
+	epatch "${FILESDIR}/${patch_p}_include-paths.patch"
+	epatch "${FILESDIR}/${patch_p}_required-libraries.patch"
 
 	eautoreconf -v --install || die
 	chmod +x configure
