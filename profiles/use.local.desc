@@ -1,2 +1,1 @@
 games-emulation/ps2emu-zerogs:shaders - Compile the shaders locally instead of using the precompiled ones.
-games-emulation/pcsx2-playground:sse4 - Force sse4 detection on CPUs.
