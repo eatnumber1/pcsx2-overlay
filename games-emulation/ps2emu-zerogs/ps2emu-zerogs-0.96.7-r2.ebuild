@@ -37,11 +37,11 @@ DEPEND="
 	)
 	!amd64? (
 		>=media-gfx/nvidia-cg-toolkit-2.1.0016
-	)"
+	)
+	!games-emulation/ps2emu-zzogl"
 
 
 RDEPEND="${DEPEND}
-	!games-emulation/ps2emu-zzogl
 	games-emulation/pcsx2"
 
 #S="${WORKDIR}/opengl"
