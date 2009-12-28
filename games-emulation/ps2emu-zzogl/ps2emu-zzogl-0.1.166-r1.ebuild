@@ -51,10 +51,6 @@ pkg_setup() {
 	append-flags "-I${S}/common"
 	append-ldflags -Wl,--no-as-needed,--no-undefined
 
-	if use shaders; then
-		ewarn "If compilation fails, try recompiling with USE=\"-shaders\""
-	fi
-
 	if use amd64 && ! has_multilib_profile; then
 		eerror "You must be on a multilib profile to use pcsx2!"
 		die "No multilib profile."
@@ -89,6 +85,10 @@ src_configure() {
 
 src_compile() {
 	if ! emake; then
+		if use shaders; then
+			eerror "Tips for debugging your build failure:"
+			eerror "  Try building with USE=\"-shaders\""
+		fi
 		die "emake failed"
 	fi
 
