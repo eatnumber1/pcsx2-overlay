@@ -17,9 +17,9 @@ RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
 DEPEND="
+	media-libs/glew
 	x86? (
 		x11-libs/libX11
-		media-libs/glew
 		virtual/opengl
 		media-libs/jpeg
 		sys-libs/zlib
