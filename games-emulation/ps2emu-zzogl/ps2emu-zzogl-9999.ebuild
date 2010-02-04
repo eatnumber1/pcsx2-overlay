@@ -16,8 +16,7 @@ KEYWORDS=""
 RESTRICT="primaryuri"
 IUSE="debug sse2 shaders"
 
-DEPEND="
-	media-libs/glew
+COMMON_DEPEND="
 	x86? (
 		x11-libs/libX11
 		virtual/opengl
@@ -27,6 +26,7 @@ DEPEND="
 		x11-proto/xproto
 		x11-proto/xf86vidmodeproto
 		>=x11-libs/gtk+-2
+		media-libs/glew
 	)
 	amd64? (
 		>=app-emulation/emul-linux-x86-xlibs-20091226[opengl]
@@ -38,8 +38,9 @@ DEPEND="
 		>=media-gfx/nvidia-cg-toolkit-2.1.0016
 	)
 	!games-emulation/ps2emu-zerogs"
-
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	amd64? ( media-libs/glew )"
+RDEPEND="${COMMON_DEPEND}
 	games-emulation/pcsx2"
 
 S="${WORKDIR}/opengl"
