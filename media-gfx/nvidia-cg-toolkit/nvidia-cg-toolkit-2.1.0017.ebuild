@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-gfx/nvidia-cg-toolkit/nvidia-cg-toolkit-2.1.0017.ebuild,v 1.1 2009/03/01 21:31:51 vapier Exp $
 
+EAPI=2
 inherit versionator
 
 MY_PV="$(get_version_component_range 1-2)"
