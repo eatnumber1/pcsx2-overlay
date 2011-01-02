@@ -1,8 +1,0 @@
--games-emulation/pcsx2
--games-emulation/ps2emu-cddvdlinuz
--games-emulation/ps2emu-cdvdiso
--games-emulation/ps2emu-dev9null
--games-emulation/ps2emu-gssoft
--games-emulation/ps2emu-padxwin
--games-emulation/ps2emu-spu2null
--games-emulation/ps2emu-usbnull
